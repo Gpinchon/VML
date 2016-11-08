@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:57:42 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 18:04:54 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ VEC3			vec4_to_vec3(VEC4 v);
 VEC4			vec3_to_vec4(VEC3 v);
 
 VEC3			vec3_interp(float (*interp_function)(float, float, float),
-	VEC3 start, VEC3 end, float percent);
+				VEC3 start, VEC3 end, float percent);
 VEC4			vec4_interp(float (*interp_function)(float, float, float),
-	VEC4 start, VEC4 end, float percent);
+				VEC4 start, VEC4 end, float percent);
 float			linear(float start, float end, float percent);
 float			cubic(float start, float end, float percent);
 
@@ -100,7 +100,7 @@ FRUSTUM			new_frustum(float left, float right, float bottom, float top);
 MAT4			mat4_rotation(VEC3 axis);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
-	float z_near, float z_far);
+				float z_near, float z_far);
 MAT4			mat4_orthographic(FRUSTUM frustum, float z_near, float z_far);
 MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_translate(VEC3 translation);
