@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 18:04:54 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 18:14:50 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,24 @@ typedef struct	s_mat3
 
 VEC3			new_vec3(float x, float y, float z);
 VEC4			new_vec4(float x, float y, float z, float w);
-MAT4			new_m4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
-MAT3			new_m3(VEC3 a, VEC3 b, VEC3 c);
+MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
+MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 
 VEC3			vec3_add(VEC3 v, VEC3 v1);
 VEC4			vec4_add(VEC4 v, VEC4 v1);
 VEC3			vec3_sub(VEC3 v, VEC3 v1);
 VEC4			vec4_sub(VEC4 v, VEC4 v1);
 VEC3			vec3_cross(VEC3 v, VEC3 v1);
-float			vec3_dot(VEC3 v1, VEC3 v2);
-float			vec4_dot(VEC4 v1, VEC4 v2);
-float			vec3_length(VEC3 v);
-float			vec4_length(VEC4 v);
 VEC3			vec3_mult(VEC3 v1, VEC3 v2);
 VEC4			vec4_mult(VEC4 v1, VEC4 v2);
 VEC3			vec3_scale(VEC3 v, float f);
 VEC4			vec4_scale(VEC4 v, float f);
 VEC3			vec3_normalize(VEC3 v);
 VEC4			vec4_normalize(VEC4 v);
+float			vec3_dot(VEC3 v1, VEC3 v2);
+float			vec4_dot(VEC4 v1, VEC4 v2);
+float			vec3_length(VEC3 v);
+float			vec4_length(VEC4 v);
 VEC3			mat4_mult_vec3(MAT4 m, VEC3 v);
 VEC4			mat4_mult_vec4(MAT4 m, VEC4 v);
 t_vec2			vec3_to_vec2(VEC3 v);
