@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 16:47:09 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 16:54:02 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,12 @@ t_mat4			mat3_to_mat4(t_mat3 m);
 t_mat4			mat4_inverse(const t_mat4 i);
 t_mat4			mat4_transpose(const t_mat4 in);
 t_mat4			mat4_mult_mat4(t_mat4 m, t_mat4 m1);
+
 t_mat4			mat4_rotation(t_vec3 axis);
 t_mat4			mat4_lookat(t_vec3 eye, t_vec3 target, t_vec3 up);
 t_mat4			mat4_perspective(float fov, float aspect,
 	float z_near, float z_far);
+t_mat4			mat4_scale(t_vec3 scale);
+t_mat4			mat4_translate(t_vec3 translation);
 
 #endif
