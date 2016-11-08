@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:55:50 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 18:06:48 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,17 @@ t_mat4	mat4_translate(t_vec3 translation)
 
 t_mat4	mat4_lookat(t_vec3 eye, t_vec3 target, t_vec3 up)
 {
-	t_vec3	f;
-	t_vec3	s;
 	t_vec3	u;
 
-	f = vec3_normalize(vec3_sub(target, eye));
-	s = vec3_normalize(vec3_cross(f, up));
-	u = vec3_cross(s, f);
+	target = vec3_normalize(vec3_sub(target, eye));
+	up = vec3_normalize(vec3_cross(target, up));
+	u = vec3_cross(up, target);
 	return ((t_mat4){.m = {
-		s.x, u.x, -f.x, 0,
-		s.y, u.y, -f.y, 0,
-		s.z, u.z, -f.z, 0,
-		-vec3_dot(s, eye),
+		up.x, u.x, -target.x, 0,
+		up.y, u.y, -target.y, 0,
+		up.z, u.z, -target.z, 0,
+		-vec3_dot(up, eye),
 		-vec3_dot(u, eye),
-		vec3_dot(f, eye)
+		vec3_dot(target, eye)
 	}});
 }
