@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:54:39 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 17:57:42 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ MAT4			mat4_inverse(const MAT4 i);
 MAT4			mat4_transpose(const MAT4 in);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 
+FRUSTUM			new_frustum(float left, float right, float bottom, float top);
 MAT4			mat4_rotation(VEC3 axis);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
