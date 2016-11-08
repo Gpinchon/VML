@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:11:50 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 17:54:39 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define VEC4			struct s_vec4
 # define MAT4			struct s_mat4
 # define MAT3			struct s_mat3
+# define FRUSTUM		VEC4
 
 typedef struct	s_vec4
 {
@@ -99,6 +100,7 @@ MAT4			mat4_rotation(VEC3 axis);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
 	float z_near, float z_far);
+MAT4			mat4_orthographic(FRUSTUM frustum, float z_near, float z_far);
 MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_translate(VEC3 translation);
 
