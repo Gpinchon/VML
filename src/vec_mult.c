@@ -12,7 +12,7 @@
 
 #include <vml.h>
 
-t_vec3	vec3_mult_vec3(t_vec3 v1, t_vec3 v2)
+t_vec3	vec3_mult(t_vec3 v1, t_vec3 v2)
 {
 	return ((t_vec3){
 		v1.x * v2.x,
@@ -21,7 +21,7 @@ t_vec3	vec3_mult_vec3(t_vec3 v1, t_vec3 v2)
 	});
 }
 
-t_vec4	vec4_mult_vec4(t_vec4 v1, t_vec4 v2)
+t_vec4	vec4_mult(t_vec4 v1, t_vec4 v2)
 {
 	return ((t_vec4){
 		v1.x * v2.x,

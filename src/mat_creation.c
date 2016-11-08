@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 16:53:41 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 17:14:11 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,5 @@ t_mat4	mat4_lookat(t_vec3 eye, t_vec3 target, t_vec3 up)
 		-vec3_dot(s, eye),
 		-vec3_dot(u, eye),
 		vec3_dot(f, eye)
-	}});
-}
-
-t_mat4	mat4_perspective(float fov, float aspect, float z_near, float z_far)
-{
-	float	r;
-	float	delta_z;
-	float	s;
-	float	cotangent;
-
-	r = TO_RADIAN(fov / 2.f);
-	s = sin(r);
-	cotangent = 0;
-	delta_z = z_far - z_near;
-	if (delta_z == 0 || s == 0 || aspect == 0)
-		return (mat4_zero());
-	cotangent = cos(r) / s;
-	return ((t_mat4){ .m = {
-		cotangent / aspect, 0, 0, 0,
-		0, cotangent, 0, 0,
-		0, 0, -(z_far + z_near) / delta_z, -1,
-		0, 0, -2 * z_near * z_far / delta_z, 0
 	}});
 }
