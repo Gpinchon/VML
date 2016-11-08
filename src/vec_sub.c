@@ -12,12 +12,12 @@
 
 #include <vml.h>
 
-t_vec3	vec3_sub_vec3(t_vec3 v, t_vec3 v1)
+t_vec3	vec3_sub(t_vec3 v, t_vec3 v1)
 {
 	return ((t_vec3){v.x - v1.x, v.y - v1.y, v.y - v1.y});
 }
 
-t_vec4	vec4_sub_vec4(t_vec4 v, t_vec4 v1)
+t_vec4	vec4_sub(t_vec4 v, t_vec4 v1)
 {
 	return ((t_vec4){v.x - v1.x, v.y - v1.y, v.y - v1.y, v.w - v1.w});
 }

@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/10/23 18:43:12 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/08 16:25:32 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRC		=	./src/mat_init.c			\
 			./src/mat_convert.c			\
 			./src/mat_operations.c		\
 			./src/mat_mult.c			\
+			./src/mat_new.c				\
+			./src/mat_creation.c		\
 			./src/vec_init.c			\
 			./src/vec_add.c				\
 			./src/vec_cross.c			\

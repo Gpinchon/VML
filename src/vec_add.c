@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add.c                                              :+:      :+:    :+:   */
+/*   vec_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 19:26:03 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/10/17 12:05:01 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/11/08 16:30:18 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-t_vec3	vec3_add_vec3(t_vec3 v, t_vec3 v1)
+t_vec3	vec3_add(t_vec3 v, t_vec3 v1)
 {
 	return ((t_vec3){
 		v.x + v1.x,
@@ -21,7 +21,7 @@ t_vec3	vec3_add_vec3(t_vec3 v, t_vec3 v1)
 	});
 }
 
-t_vec4	vec4_add_vec4(t_vec4 v, t_vec4 v1)
+t_vec4	vec4_add(t_vec4 v, t_vec4 v1)
 {
 	return ((t_vec4){
 		v.x + v1.x,

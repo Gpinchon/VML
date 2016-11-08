@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_cross.c                                        :+:      :+:    :+:   */
+/*   mat_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/12 19:04:06 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 16:30:51 by gpinchon         ###   ########.fr       */
+/*   Created: 2016/11/08 15:59:42 by gpinchon          #+#    #+#             */
+/*   Updated: 2016/11/08 16:25:53 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-t_vec3	vec3_cross(t_vec3 v, t_vec3 v1)
+t_mat4			new_m4(t_vec4 a, t_vec4 b, t_vec4 c, t_vec4 d)
 {
-	return ((t_vec3){
-		v.y * v1.z - v.z * v1.y,
-		v.z * v1.x - v.x * v1.z,
-		v.x * v1.y - v.y * v1.x
-	});
+	return ((t_mat4){.m = {
+		a.x, a.y, a.z, a.w,
+		b.x, b.y, b.z, b.w,
+		c.x, c.y, c.z, c.w,
+		d.x, d.y, d.z, d.w,
+	}});
+}
+
+t_mat3			new_m3(t_vec3 a, t_vec3 b, t_vec3 c)
+{
+	return ((t_mat3){.m = {
+		a.x, a.y, a.z,
+		b.x, b.y, b.z,
+		c.x, c.y, c.z
+	}});
 }
