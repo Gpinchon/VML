@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:14:06 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:27:16 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/08 17:34:02 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ t_mat4	mat4_perspective(float fov, float aspect, float z_near, float z_far)
 
 	fov = TO_RADIAN(fov / 2.f);
 	s = sin(fov);
-	cotangent = 0;
 	delta_z = z_far - z_near;
-	if (delta_z == 0 || s == 0 || aspect == 0)
+	if (!delta_z || !s || !aspect)
 		return (mat4_zero());
 	cotangent = cos(fov) / s;
 	return ((t_mat4){ .m = {
