@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:44:28 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 20:55:15 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 21:22:36 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ INTERSECT		intersect_cone(t_primitive cp, t_ray r)
 		&& cp.size / cos(atan(cp.radius)) > vec3_length(vec[0])))
 		{
 			inter.intersects = 1;
-			inter.closest = inter.distance[0];
-			inter.position = intersect_compute_position(r, inter.closest);
+			inter.position = intersect_compute_position(r, inter.distance[0]);
 			inter.normal = cone_normal(inter.position, cp);
 			return (inter);
 		}

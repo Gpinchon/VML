@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 20:47:31 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 21:22:17 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ INTERSECT	intersect_sphere(t_primitive s, t_ray r)
 				vec3_dot(eye, eye) - (s.radius2),
 				inter.distance) && intersect_test(inter.distance)))
 		return (inter);
-	inter.closest = inter.distance[0];
-	inter.position = intersect_compute_position(r, inter.closest);
+	inter.position = intersect_compute_position(r, inter.distance[0]);
 	inter.normal = sphere_normal(inter.position, s);
 	return (inter);
 }
@@ -54,8 +53,7 @@ INTERSECT	intersect_cylinder(t_primitive cp, t_ray r)
 				vec3_dot(v[5], v[5]) - (cp.radius2),
 				inter.distance) && intersect_test(inter.distance)))
 		return (inter);
-	inter.closest = inter.distance[0];
-	inter.position = intersect_compute_position(r, inter.closest);
+	inter.position = intersect_compute_position(r, inter.distance[0]);
 	inter.normal = cylinder_normal(inter.position, cp);
 	return (inter);
 }
@@ -76,8 +74,8 @@ INTERSECT	intersect_plane(t_primitive cp, t_ray r)
 		if ((t = vec3_dot(vec3_sub(cp.position, r.origin), normal) / denom) >= FLOAT_ZERO)
 		{
 			inter.intersects = 1;
-			inter.closest = inter.distance[0] = inter.distance[1] = t;
-			inter.position = intersect_compute_position(r, inter.closest);
+			inter.distance[0] = inter.distance[1] = t;
+			inter.position = intersect_compute_position(r, inter.distance[0]);
 			inter.normal = plane_normal(inter.position, cp);
 		}
 	}

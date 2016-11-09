@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 20:45:50 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 21:21:40 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct	s_ray
 typedef struct	s_intersect
 {
 	char		intersects;
-	float		closest;
 	float		distance[2];
 	VEC3		position;
 	VEC3		normal;
