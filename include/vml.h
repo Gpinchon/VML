@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 23:25:07 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 23:33:08 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,10 @@ typedef struct	s_intersect
 	VEC3		normal;
 }				t_intersect;
 
+/*
+** Variable creation functions
+*/
+
 VEC3			new_vec3(float x, float y, float z);
 VEC4			new_vec4(float x, float y, float z, float w);
 MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
@@ -101,6 +105,9 @@ FRUSTUM			new_frustum(float left, float right, float bottom, float top);
 RAY				new_ray(VEC3 origin, VEC3 direction);
 INTERSECT		new_intersect();
 
+/*
+** Vectorial operations (in alphabetic order)
+*/
 
 VEC2			vec2_add(VEC2 v, VEC2 v1);
 VEC3			vec3_add(VEC3 v, VEC3 v1);
@@ -146,12 +153,20 @@ VEC3			vec2_to_vec3(VEC2 v);
 VEC3			vec4_to_vec3(VEC4 v);
 VEC4			vec3_to_vec4(VEC3 v);
 
+/*
+** Interpolation functions
+*/
+
 VEC3			vec3_interp(float (*interp_function)(float, float, float),
 				VEC3 start, VEC3 end, float percent);
 VEC4			vec4_interp(float (*interp_function)(float, float, float),
 				VEC4 start, VEC4 end, float percent);
 float			linear(float start, float end, float percent);
 float			cubic(float start, float end, float percent);
+
+/*
+** Matrix operations
+*/
 
 MAT4			mat4_identity(void);
 MAT4			mat4_zero(void);
@@ -163,13 +178,22 @@ MAT4			mat4_inverse(const MAT4 i);
 MAT4			mat4_transpose(const MAT4 in);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 
+/*
+** 3D-related matrices creation
+*/
+
 MAT4			mat4_rotation(VEC3 axis);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
 				float z_near, float z_far);
-MAT4			mat4_orthographic(FRUSTUM frustum, float z_near, float z_far);
+MAT4			mat4_orthographic(FRUSTUM frustum,
+				float z_near, float z_far);
 MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_translate(VEC3 translation);
+
+/*
+** Ray-tracing related functions
+*/
 
 INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
 INTERSECT		intersect_cylinder(t_primitive cp, RAY r);
