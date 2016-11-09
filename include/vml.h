@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 23:38:44 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 23:41:22 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,12 +172,12 @@ MAT4			mat4_identity(void);
 MAT4			mat4_zero(void);
 MAT3			mat3_identity(void);
 MAT3			mat3_zero(void);
-MAT3			mat4_to_mat3(MAT4 m);
-MAT4			mat3_to_mat4(MAT3 m);
-MAT4			mat4_inverse(const MAT4 i);
-MAT4			mat4_transpose(const MAT4 in);
+MAT4			mat4_inverse(const MAT4 m);
+MAT4			mat4_transpose(const MAT4 m);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
+MAT3			mat4_to_mat3(MAT4 m);
+MAT4			mat3_to_mat4(MAT3 m);
 
 /*
 ** 3D-related matrices creation
