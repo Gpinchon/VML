@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/09 20:18:06 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/09 20:46:12 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC		=	./src/mat_init.c			\
 			./src/vec_cross.c			\
 			./src/vec_dot.c				\
 			./src/vec_length.c			\
+			./src/vec_negate.c			\
 			./src/vec_normalize.c		\
 			./src/vec_sub.c				\
 			./src/vec_convert.c			\
@@ -35,6 +36,7 @@ SRC		=	./src/mat_init.c			\
 			./src/ray_new.c				\
 			./src/inter_calc.c			\
 			./src/inter_primitives.c	\
+			./src/inter_primitives2.c	\
 			./src/inter_normals.c		\
 			./src/interp_functions.c
 

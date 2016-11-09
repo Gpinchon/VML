@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 20:21:20 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 20:45:50 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define INTERSECT		struct s_intersect
 # define PRIMITIVE		struct s_primitive
 # define FRUSTUM		VEC4
-# define FLOAT_ZERO		0.0001f
+# define FLOAT_ZERO		1E-6
 # define DOUBLE_ZERO	0.000001
 # define PRIM_TYPE		enum e_prim_type
 
@@ -98,6 +98,8 @@ VEC4			new_vec4(float x, float y, float z, float w);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
 MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 
+VEC3			vec3_negate(VEC3 v);
+VEC4			vec4_negate(VEC4 v);
 VEC3			vec3_add(VEC3 v, VEC3 v1);
 VEC4			vec4_add(VEC4 v, VEC4 v1);
 VEC3			vec3_sub(VEC3 v, VEC3 v1);
@@ -129,7 +131,10 @@ VEC3			vec4_to_vec3(VEC4 v);
 VEC4			vec3_to_vec4(VEC3 v);
 
 RAY				new_ray(VEC3 origin, VEC3 direction);
-INTERSECT		intersect_sphere(PRIMITIVE s, t_ray r);
+INTERSECT		new_intersect();
+INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
+INTERSECT		intersect_cylinder(t_primitive cp, RAY r);
+INTERSECT		intersect_plane(t_primitive cp, RAY r);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);

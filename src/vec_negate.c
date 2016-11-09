@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_new.c                                          :+:      :+:    :+:   */
+/*   vec_negate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 15:57:51 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 20:39:54 by gpinchon         ###   ########.fr       */
+/*   Created: 2016/11/09 20:35:34 by gpinchon          #+#    #+#             */
+/*   Updated: 2016/11/09 20:36:35 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-RAY			new_ray(VEC3 origin, VEC3 direction)
+t_vec3	vec3_negate(t_vec3 v)
 {
-	return ((RAY){origin, direction});
+	return ((t_vec3){
+		-v.x,
+		-v.y,
+		-v.z
+	});
 }
 
-INTERSECT	new_intersect()
+t_vec4	vec4_negate(t_vec4 v)
 {
-	return ((INTERSECT){
-		0, 0, {0, 0}, (VEC3){0, 0, 0}, (VEC3){0, 0, 0}
+	return ((t_vec4){
+		-v.x,
+		-v.y,
+		-v.z,
+		-v.w
 	});
 }
