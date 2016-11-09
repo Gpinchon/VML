@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 18:14:50 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 18:11:47 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # define VEC4			struct s_vec4
 # define MAT4			struct s_mat4
 # define MAT3			struct s_mat3
+# define RAY			struct s_ray
+# define INTERSECT		struct s_intersect
 # define FRUSTUM		VEC4
+# define FLOAT_ZERO		0.0001f
+# define DOUBLE_ZERO	0.000001
 
 typedef struct	s_vec4
 {
@@ -52,6 +56,20 @@ typedef struct	s_mat3
 	float		m[9];
 }				t_mat3;
 
+typedef struct	s_ray
+{
+	VEC3		origin;
+	VEC3		direction;
+}				t_ray;
+
+typedef struct	s_intersect
+{
+	char		intersects;
+	float		closest;
+	float		distance[2];
+	VEC3		position;
+}				t_intersect;
+
 VEC3			new_vec3(float x, float y, float z);
 VEC4			new_vec4(float x, float y, float z, float w);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
@@ -78,6 +96,12 @@ t_vec2			vec3_to_vec2(VEC3 v);
 VEC3			vec2_to_vec3(t_vec2 v);
 VEC3			vec4_to_vec3(VEC4 v);
 VEC4			vec3_to_vec4(VEC3 v);
+
+RAY				new_ray(VEC3 origin, VEC3 direction);
+char			solve_quadratic(float a, float b, float c, float *t);
+char			test_intersect(float t[2]);
+float			find_closest(float t[2]);
+
 
 VEC3			vec3_interp(float (*interp_function)(float, float, float),
 				VEC3 start, VEC3 end, float percent);

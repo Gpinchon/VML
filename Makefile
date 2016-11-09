@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/08 17:20:45 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/09 18:13:32 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRC		=	./src/mat_init.c			\
 			./src/vec_scale.c			\
 			./src/vec_interp.c			\
 			./src/float_mult.c			\
+			./src/ray_new.c				\
+			./src/inter_calc.c			\
 			./src/interp_functions.c
 
 OBJ		= $(SRC:.c=.o)
