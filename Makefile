@@ -6,38 +6,37 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/09 20:46:12 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/09 22:57:02 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libvml.a
-SRC		=	./src/mat_init.c			\
-			./src/mat_convert.c			\
-			./src/mat_operations.c		\
-			./src/mat_mult.c			\
-			./src/mat_new.c				\
-			./src/mat_creation.c		\
-			./src/mat_projection.c		\
-			./src/vec_init.c			\
-			./src/vec_div.c				\
-			./src/vec_proj.c			\
-			./src/vec_add.c				\
-			./src/vec_cross.c			\
-			./src/vec_dot.c				\
-			./src/vec_length.c			\
-			./src/vec_negate.c			\
-			./src/vec_normalize.c		\
-			./src/vec_sub.c				\
-			./src/vec_convert.c			\
-			./src/vec_mult.c			\
-			./src/vec_scale.c			\
-			./src/vec_interp.c			\
-			./src/float_mult.c			\
-			./src/ray_new.c				\
-			./src/inter_calc.c			\
-			./src/inter_primitives.c	\
-			./src/inter_primitives2.c	\
-			./src/inter_normals.c		\
+SRC		=	./src/mat/init.c			\
+			./src/mat/convert.c			\
+			./src/mat/operations.c		\
+			./src/mat/mult.c			\
+			./src/mat/new.c				\
+			./src/mat/creation.c		\
+			./src/mat/projection.c		\
+			./src/vec/new.c				\
+			./src/vec/div.c				\
+			./src/vec/proj.c			\
+			./src/vec/add.c				\
+			./src/vec/cross.c			\
+			./src/vec/dot.c				\
+			./src/vec/length.c			\
+			./src/vec/negate.c			\
+			./src/vec/normalize.c		\
+			./src/vec/sub.c				\
+			./src/vec/convert.c			\
+			./src/vec/mult.c			\
+			./src/vec/scale.c			\
+			./src/vec/interp.c			\
+			./src/ray/new.c				\
+			./src/ray/calc.c			\
+			./src/ray/primitives.c		\
+			./src/ray/primitives2.c		\
+			./src/ray/normals.c			\
 			./src/interp_functions.c
 
 OBJ		= $(SRC:.c=.o)
