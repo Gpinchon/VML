@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 23:41:22 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 00:16:35 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@
 # define DOUBLE_ZERO	0.000001
 # define PRIM_TYPE		enum e_prim_type
 
-typedef struct	s_vec4
+typedef struct	s_vec2
 {
 	float		x;
 	float		y;
-	float		z;
-	float		w;
-}				t_vec4;
+}				t_vec2;
 
 typedef struct	s_vec3
 {
@@ -43,21 +41,28 @@ typedef struct	s_vec3
 	float		z;
 }				t_vec3;
 
-typedef struct	s_vec2
+typedef struct	s_vec4
 {
 	float		x;
 	float		y;
-}				t_vec2;
+	float		z;
+	float		w;
+}				t_vec4;
 
-typedef struct	s_mat4
+typedef struct	s_mat2
 {
-	float		m[16];
-}				t_mat4;
+	float		m[4];
+}				t_mat2;
 
 typedef struct	s_mat3
 {
 	float		m[9];
 }				t_mat3;
+
+typedef struct	s_mat4
+{
+	float		m[16];
+}				t_mat4;
 
 enum e_prim_type
 {
@@ -176,6 +181,9 @@ MAT4			mat4_inverse(const MAT4 m);
 MAT4			mat4_transpose(const MAT4 m);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
+float			mat2_determinant(MAT2 m);
+float			mat3_determinant(MAT3 m);
+float			mat4_determinant(MAT4 m);
 MAT3			mat4_to_mat3(MAT4 m);
 MAT4			mat3_to_mat4(MAT3 m);
 
