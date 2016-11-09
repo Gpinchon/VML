@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/09 22:57:02 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/09 23:07:42 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC		=	./src/mat/init.c			\
 			./src/vec/div.c				\
 			./src/vec/proj.c			\
 			./src/vec/add.c				\
+			./src/vec/fadd.c			\
 			./src/vec/cross.c			\
 			./src/vec/dot.c				\
 			./src/vec/length.c			\
