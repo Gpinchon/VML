@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 15:57:51 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 17:25:46 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:53:33 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ INTERSECT	new_intersect(float t[2])
 {
 	INTERSECT	intersect;
 
-	if ((intersect.intersects = test_intersect(t)))
+	if ((intersect.intersects = intersect_test(t)))
 		intersect.closest = find_closest(t);
 	return (intersect);
 }

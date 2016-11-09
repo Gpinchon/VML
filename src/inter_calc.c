@@ -6,13 +6,22 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:05:07 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 18:13:08 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 19:52:18 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-char	test_intersect(float t[2])
+VEC3		intersect_compute_position(RAY r, float distance)
+{
+	return ((VEC3){
+		r.origin.x + r.direction.x * distance,
+		r.origin.y + r.direction.y * distance,
+		r.origin.z + r.direction.z * distance
+	});
+}
+
+char	intersect_test(float t[2])
 {
 	return (t[0] > FLOAT_ZERO || t[1] > FLOAT_ZERO);
 }

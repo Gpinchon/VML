@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/09 18:13:32 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/09 20:18:06 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC		=	./src/mat_init.c			\
 			./src/mat_creation.c		\
 			./src/mat_projection.c		\
 			./src/vec_init.c			\
+			./src/vec_div.c				\
+			./src/vec_proj.c			\
 			./src/vec_add.c				\
 			./src/vec_cross.c			\
 			./src/vec_dot.c				\
@@ -32,6 +34,8 @@ SRC		=	./src/mat_init.c			\
 			./src/float_mult.c			\
 			./src/ray_new.c				\
 			./src/inter_calc.c			\
+			./src/inter_primitives.c	\
+			./src/inter_normals.c		\
 			./src/interp_functions.c
 
 OBJ		= $(SRC:.c=.o)

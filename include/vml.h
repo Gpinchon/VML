@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 18:11:47 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/09 20:21:20 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 # define MAT3			struct s_mat3
 # define RAY			struct s_ray
 # define INTERSECT		struct s_intersect
+# define PRIMITIVE		struct s_primitive
 # define FRUSTUM		VEC4
 # define FLOAT_ZERO		0.0001f
 # define DOUBLE_ZERO	0.000001
+# define PRIM_TYPE		enum e_prim_type
 
 typedef struct	s_vec4
 {
@@ -56,6 +58,26 @@ typedef struct	s_mat3
 	float		m[9];
 }				t_mat3;
 
+enum e_prim_type
+{
+	sphere = 0x1,
+	plane = 0x3,
+	cylinder = 0x3,
+	capped_cylinder = 0x31,
+	cone = 0x4,
+	capped_cone = 0x41
+};
+
+typedef	struct	s_primitive
+{
+	PRIM_TYPE	type;
+	float		radius;
+	float		radius2;
+	float		size;
+	t_vec3		position;
+	t_vec3		direction;
+}				t_primitive;
+
 typedef struct	s_ray
 {
 	VEC3		origin;
@@ -68,6 +90,7 @@ typedef struct	s_intersect
 	float		closest;
 	float		distance[2];
 	VEC3		position;
+	VEC3		normal;
 }				t_intersect;
 
 VEC3			new_vec3(float x, float y, float z);
@@ -82,8 +105,16 @@ VEC4			vec4_sub(VEC4 v, VEC4 v1);
 VEC3			vec3_cross(VEC3 v, VEC3 v1);
 VEC3			vec3_mult(VEC3 v1, VEC3 v2);
 VEC4			vec4_mult(VEC4 v1, VEC4 v2);
+VEC3			vec3_div(VEC3 v, VEC3 v1);
+VEC4			vec4_div(VEC4 v, VEC4 v1);
+VEC3			vec3_proj(VEC3 v, VEC3 v1);
+VEC4			vec4_proj(VEC4 v, VEC4 v1);
 VEC3			vec3_scale(VEC3 v, float f);
 VEC4			vec4_scale(VEC4 v, float f);
+VEC3			vec3_fadd(VEC3 v, float d);
+VEC4			vec4_fadd(VEC4 v, float d);
+VEC3			vec3_fdiv(VEC3 v, float d);
+VEC4			vec4_fdiv(VEC4 v, float d);
 VEC3			vec3_normalize(VEC3 v);
 VEC4			vec4_normalize(VEC4 v);
 float			vec3_dot(VEC3 v1, VEC3 v2);
@@ -98,9 +129,15 @@ VEC3			vec4_to_vec3(VEC4 v);
 VEC4			vec3_to_vec4(VEC3 v);
 
 RAY				new_ray(VEC3 origin, VEC3 direction);
+INTERSECT		intersect_sphere(PRIMITIVE s, t_ray r);
+VEC3			intersect_compute_position(RAY r, float distance);
+char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);
-char			test_intersect(float t[2]);
 float			find_closest(float t[2]);
+VEC3			cylinder_normal(VEC3 position, PRIMITIVE p);
+VEC3			sphere_normal(VEC3 position, PRIMITIVE p);
+VEC3			plane_normal(VEC3 position, PRIMITIVE p);
+VEC3			cone_normal(VEC3 position, PRIMITIVE p);
 
 
 VEC3			vec3_interp(float (*interp_function)(float, float, float),
