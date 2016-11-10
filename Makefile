@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/10 16:01:13 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/10 18:48:53 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,13 @@ SRC		=	./src/mat/init.c			\
 			./src/mat/combine.c			\
 			./src/mat/inverse.c			\
 			./src/mat/mult.c			\
+			./src/mat/mult_vec3.c		\
 			./src/mat/fmult.c			\
 			./src/mat/new.c				\
 			./src/mat/creation.c		\
+			./src/mat/rotation.c		\
+			./src/mat/scale.c			\
+			./src/mat/shear.c			\
 			./src/mat/determinant.c		\
 			./src/mat/projection.c		\
 			./src/mat/transpose.c		\

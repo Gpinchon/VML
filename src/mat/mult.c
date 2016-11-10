@@ -6,11 +6,36 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 18:42:13 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 23:19:30 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 18:47:33 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
+
+t_mat2	mat2_mult_mat2(t_mat2 m, t_mat2 m1)
+{
+	return ((t_mat2){.m = {
+		m.m[0] * m1.m[0] + m.m[1] * m1.m[2],
+		m.m[0] * m1.m[1] + m.m[1] * m1.m[3],
+		m.m[2] * m1.m[0] + m.m[3] * m1.m[2],
+		m.m[2] * m1.m[1] + m.m[3] * m1.m[3]
+	}});
+}
+
+t_mat3	mat3_mult_mat3(t_mat3 m, t_mat3 m1)
+{
+	return ((t_mat3){.m = {
+		m.m[0] * m1.m[0] + m.m[1] * m1.m[3] + m.m[2] * m1.m[6],
+		m.m[0] * m1.m[1] + m.m[1] * m1.m[4] + m.m[2] * m1.m[7],
+		m.m[0] * m1.m[2] + m.m[1] * m1.m[5] + m.m[2] * m1.m[8],
+		m.m[3] * m1.m[0] + m.m[4] * m1.m[3] + m.m[5] * m1.m[6],
+		m.m[3] * m1.m[1] + m.m[4] * m1.m[4] + m.m[5] * m1.m[7],
+		m.m[3] * m1.m[2] + m.m[4] * m1.m[5] + m.m[5] * m1.m[8],
+		m.m[6] * m1.m[0] + m.m[7] * m1.m[3] + m.m[8] * m1.m[6],
+		m.m[6] * m1.m[1] + m.m[7] * m1.m[4] + m.m[8] * m1.m[7],
+		m.m[6] * m1.m[2] + m.m[7] * m1.m[5] + m.m[8] * m1.m[8]
+	}});
+}
 
 t_mat4	mat4_mult_mat4(t_mat4 m, t_mat4 m1)
 {
@@ -37,15 +62,6 @@ t_mat4	mat4_mult_mat4(t_mat4 m, t_mat4 m1)
 		a[2] * b[12] + a[6] * b[13] + a[10] * b[14] + a[14] * b[15],
 		a[3] * b[12] + a[7] * b[13] + a[11] * b[14] + a[15] * b[15]
 	}});
-}
-
-t_vec3	mat4_mult_vec3(t_mat4 m, t_vec3 v)
-{
-	return ((t_vec3){
-		v.x * m.m[0] + v.y * m.m[4] + v.z * m.m[8] + m.m[12],
-		v.x * m.m[1] + v.y * m.m[5] + v.z * m.m[9] + m.m[13],
-		v.x * m.m[2] + v.y * m.m[6] + v.z * m.m[10] + m.m[14]
-	});
 }
 
 t_vec4	mat4_mult_vec4(t_mat4 m, t_vec4 v)

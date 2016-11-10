@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 15:56:19 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 18:49:59 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ VEC4			vec4_scale(VEC4 v, float f);
 VEC2			vec2_sub(VEC2 v, VEC2 v1);
 VEC3			vec3_sub(VEC3 v, VEC3 v1);
 VEC4			vec4_sub(VEC4 v, VEC4 v1);
+VEC3			mat3_mult_vec3(MAT3 m, VEC3 v);
 VEC3			mat4_mult_vec3(MAT4 m, VEC3 v);
 VEC4			mat4_mult_vec4(MAT4 m, VEC4 v);
 VEC2			vec3_to_vec2(VEC3 v);
@@ -197,6 +198,8 @@ MAT4			mat4_minors(const MAT4 m);
 MAT2			mat2_fmult(MAT2 m, float f);
 MAT3			mat3_fmult(MAT3 m, float f);
 MAT4			mat4_fmult(MAT4 m, float f);
+MAT2			mat2_mult_mat2(MAT2 m, MAT2 m1);
+MAT3			mat3_mult_mat3(MAT3 m, MAT3 m1);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
 float			mat2_determinant(MAT2 m);
@@ -206,16 +209,20 @@ MAT3			mat4_to_mat3(MAT4 m);
 MAT4			mat3_to_mat4(MAT3 m);
 
 /*
-** 3D-related matrices creation
+** 3D/2D-related matrices creation
 */
 
+MAT2			mat2_rotation(float angle);
+MAT3			mat3_rotation(VEC3 axis);
 MAT4			mat4_rotation(VEC3 axis);
+MAT2			mat2_scale(VEC2 scale);
+MAT3			mat3_scale(VEC3 scale);
+MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
 				float z_near, float z_far);
 MAT4			mat4_orthographic(FRUSTUM frustum,
 				float z_near, float z_far);
-MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_translate(VEC3 translation);
 
 /*
