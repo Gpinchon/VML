@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/10 01:55:54 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/10 16:01:13 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,11 @@ SRC		=	./src/mat/init.c			\
 			./src/mat/adjugate.c		\
 			./src/mat/minors.c			\
 			./src/mat/convert.c			\
+			./src/mat/cofactor.c		\
 			./src/mat/combine.c			\
 			./src/mat/inverse.c			\
 			./src/mat/mult.c			\
+			./src/mat/fmult.c			\
 			./src/mat/new.c				\
 			./src/mat/creation.c		\
 			./src/mat/determinant.c		\
@@ -44,7 +46,12 @@ SRC		=	./src/mat/init.c			\
 			./src/ray/primitives.c		\
 			./src/ray/primitives2.c		\
 			./src/ray/normals.c			\
-			./src/interp_functions.c
+			./src/interp_functions.c	\
+			./src/float_equal.c
+
+TESTSRC	=	./test/test.c
+TESTOBJ	= $(TESTSRC:.c=.o)
+TESTNAM	= vml_test
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
@@ -64,10 +71,15 @@ OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
 
 all: $(NAME)
 
+test:
+	$(CC) $(CFLAGS) $(TESTSRC) -L . -lvml -o vml_test
+
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(TESTOBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(TESTNAM)
 
 re: fclean $(NAME)
+
+.PHONY: all test clean fclean re

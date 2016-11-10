@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 01:58:27 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 15:56:19 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ MAT4			mat4_identity(void);
 MAT4			mat4_zero(void);
 MAT3			mat3_identity(void);
 MAT3			mat3_zero(void);
+MAT2			mat2_inverse(const MAT2 m);
+MAT3			mat3_inverse(const MAT3 m);
 MAT4			mat4_inverse(const MAT4 m);
 MAT2			mat2_transpose(const MAT2 m);
 MAT3			mat3_transpose(const MAT3 m);
@@ -189,6 +191,12 @@ MAT4			mat4_cofactor(const MAT4 m);
 MAT2			mat2_adjugate(const MAT2 m);
 MAT3			mat3_adjugate(const MAT3 m);
 MAT4			mat4_adjugate(const MAT4 m);
+MAT2			mat2_minors(const MAT2 m);
+MAT3			mat3_minors(const MAT3 m);
+MAT4			mat4_minors(const MAT4 m);
+MAT2			mat2_fmult(MAT2 m, float f);
+MAT3			mat3_fmult(MAT3 m, float f);
+MAT4			mat4_fmult(MAT4 m, float f);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
 float			mat2_determinant(MAT2 m);
@@ -225,5 +233,7 @@ VEC3			cylinder_normal(VEC3 position, PRIMITIVE p);
 VEC3			sphere_normal(VEC3 position, PRIMITIVE p);
 VEC3			plane_normal(VEC3 position, PRIMITIVE p);
 VEC3			cone_normal(VEC3 position, PRIMITIVE p);
+
+char			float_equal(float a, float b);
 
 #endif
