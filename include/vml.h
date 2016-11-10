@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 18:49:59 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 23:49:59 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,10 +156,12 @@ VEC4			vec4_sub(VEC4 v, VEC4 v1);
 VEC3			mat3_mult_vec3(MAT3 m, VEC3 v);
 VEC3			mat4_mult_vec3(MAT4 m, VEC3 v);
 VEC4			mat4_mult_vec4(MAT4 m, VEC4 v);
+VEC2			mat2_mult_vec2(MAT2 m, VEC2 v);
+VEC2			mat3_mult_vec2(MAT3 m, VEC2 v);
 VEC2			vec3_to_vec2(VEC3 v);
-VEC3			vec2_to_vec3(VEC2 v);
+VEC3			vec2_to_vec3(VEC2 v, float z);
 VEC3			vec4_to_vec3(VEC4 v);
-VEC4			vec3_to_vec4(VEC3 v);
+VEC4			vec3_to_vec4(VEC3 v, float w);
 
 /*
 ** Interpolation functions

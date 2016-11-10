@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 18:42:13 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 18:47:33 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 23:12:09 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,4 @@ t_mat4	mat4_mult_mat4(t_mat4 m, t_mat4 m1)
 		a[2] * b[12] + a[6] * b[13] + a[10] * b[14] + a[14] * b[15],
 		a[3] * b[12] + a[7] * b[13] + a[11] * b[14] + a[15] * b[15]
 	}});
-}
-
-t_vec4	mat4_mult_vec4(t_mat4 m, t_vec4 v)
-{
-	return ((t_vec4){
-		m.m[0] * v.x + (v.y * m.m[1] + (v.z * m.m[2] + m.m[3] * v.w)),
-		m.m[4] * v.x + (v.y * m.m[5] + (v.z * m.m[6] + m.m[7] * v.w)),
-		m.m[8] * v.x + (v.y * m.m[9] + (v.z * m.m[10] + m.m[11] * v.w)),
-		m.m[12] * v.x + (v.y * m.m[13] + (v.z * m.m[14] + m.m[15] * v.w))
-	});
 }

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   mult_vec4.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/12 18:19:22 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 23:08:38 by gpinchon         ###   ########.fr       */
+/*   Created: 2016/11/10 23:11:55 by gpinchon          #+#    #+#             */
+/*   Updated: 2016/11/11 00:01:05 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-t_vec3	vec4_to_vec3(t_vec4 v)
+t_vec4	mat4_mult_vec4(t_mat4 m, t_vec4 v)
 {
-	return ((t_vec3){v.x, v.y, v.z});
-}
-
-t_vec4	vec3_to_vec4(t_vec3 v, float w)
-{
-	return ((t_vec4){v.x, v.y, v.z, w});
-}
-
-t_vec2	vec3_to_vec2(t_vec3 v)
-{
-	return ((t_vec2){v.x, v.y});
-}
-
-t_vec3	vec2_to_vec3(t_vec2 v, float z)
-{
-	return ((t_vec3){v.x, v.y, z});
+	return ((t_vec4){
+		v.x * m.m[0] + v.y * m.m[4] + v.z * m.m[8] + v.w * m.m[12],
+		v.x * m.m[1] + v.y * m.m[5] + v.z * m.m[9] + v.w * m.m[13],
+		v.x * m.m[2] + v.y * m.m[6] + v.z * m.m[10] + v.w * m.m[14],
+		v.x * m.m[3] + v.y * m.m[7] + v.z * m.m[11] + v.w * m.m[15]
+	});
 }
