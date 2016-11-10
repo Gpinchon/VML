@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 01:49:08 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 01:58:27 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,12 @@ MAT4			mat4_inverse(const MAT4 m);
 MAT2			mat2_transpose(const MAT2 m);
 MAT3			mat3_transpose(const MAT3 m);
 MAT4			mat4_transpose(const MAT4 m);
+MAT2			mat2_cofactor(const MAT2 m);
+MAT3			mat3_cofactor(const MAT3 m);
+MAT4			mat4_cofactor(const MAT4 m);
+MAT2			mat2_adjugate(const MAT2 m);
+MAT3			mat3_adjugate(const MAT3 m);
+MAT4			mat4_adjugate(const MAT4 m);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
 float			mat2_determinant(MAT2 m);
