@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 00:16:35 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/10 01:49:08 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # define VEC2			struct s_vec2
 # define VEC3			struct s_vec3
 # define VEC4			struct s_vec4
-# define MAT4			struct s_mat4
+# define MAT2			struct s_mat2
 # define MAT3			struct s_mat3
+# define MAT4			struct s_mat4
 # define RAY			struct s_ray
 # define INTERSECT		struct s_intersect
 # define PRIMITIVE		struct s_primitive
@@ -104,6 +105,7 @@ typedef struct	s_intersect
 
 VEC3			new_vec3(float x, float y, float z);
 VEC4			new_vec4(float x, float y, float z, float w);
+MAT2			new_mat2(VEC2 a, VEC2 b);
 MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
 FRUSTUM			new_frustum(float left, float right, float bottom, float top);
@@ -178,6 +180,8 @@ MAT4			mat4_zero(void);
 MAT3			mat3_identity(void);
 MAT3			mat3_zero(void);
 MAT4			mat4_inverse(const MAT4 m);
+MAT2			mat2_transpose(const MAT2 m);
+MAT3			mat3_transpose(const MAT3 m);
 MAT4			mat4_transpose(const MAT4 m);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);

@@ -6,20 +6,22 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/09 23:50:27 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/10 01:34:25 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libvml.a
 SRC		=	./src/mat/init.c			\
+			./src/mat/minors.c			\
 			./src/mat/convert.c			\
 			./src/mat/combine.c			\
-			./src/mat/operations.c		\
+			./src/mat/inverse.c			\
 			./src/mat/mult.c			\
 			./src/mat/new.c				\
 			./src/mat/creation.c		\
 			./src/mat/determinant.c		\
 			./src/mat/projection.c		\
+			./src/mat/transpose.c		\
 			./src/vec/new.c				\
 			./src/vec/div.c				\
 			./src/vec/fdiv.c			\
