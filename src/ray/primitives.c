@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 18:32:27 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 18:38:37 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ INTERSECT	intersect_sphere(t_primitive s, t_ray r)
 	inter.normal = sphere_normal(inter.position, s);
 	return (inter);
 }
+
+/*
+** TODO find a better way to intersect a cylinder
+** (Other than creating a "sphere" along the cylinder's axis...)
+*/
 
 INTERSECT	intersect_cylinder(t_primitive cp, t_ray r)
 {
