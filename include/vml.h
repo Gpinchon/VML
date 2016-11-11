@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 23:49:59 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 01:21:38 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ enum e_prim_type
 	cylinder = 0x3,
 	capped_cylinder = 0x31,
 	cone = 0x4,
-	capped_cone = 0x41
+	capped_cone = 0x41,
+	triangle = 0x5
 };
 
 typedef	struct	s_primitive
@@ -81,8 +82,9 @@ typedef	struct	s_primitive
 	float		radius;
 	float		radius2;
 	float		size;
-	t_vec3		position;
-	t_vec3		direction;
+	VEC3		point[3];
+	VEC3		position;
+	VEC3		direction;
 }				t_primitive;
 
 typedef struct	s_ray
@@ -232,8 +234,9 @@ MAT4			mat4_translate(VEC3 translation);
 */
 
 INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
-INTERSECT		intersect_cylinder(t_primitive cp, RAY r);
-INTERSECT		intersect_plane(t_primitive cp, RAY r);
+INTERSECT		intersect_cylinder(PRIMITIVE cp, RAY r);
+INTERSECT		intersect_plane(PRIMITIVE cp, RAY r);
+INTERSECT		intersect_triangle(PRIMITIVE s, t_ray r);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);

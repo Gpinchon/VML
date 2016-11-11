@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_primitives.c                                 :+:      :+:    :+:   */
+/*   primitives.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 21:22:17 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 01:21:19 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
+
+INTERSECT	intersect_triangle(t_primitive s, t_ray r)
+{
+	INTERSECT	inter;
+
+	inter = new_intersect();
+	inter.normal = vec3_cross(vec3_sub(s.point[1], s.point[0]), vec3_sub(s.point[2], s.point[0])); // inter.normal
+	float NdotRayDirection = vec3_dot(inter.normal, r.direction);
+	if (fabs(NdotRayDirection) < FLOAT_ZERO)
+		return (inter);
+	inter.distance[0] = inter.distance[1] = (vec3_dot(inter.normal, r.origin) + vec3_dot(inter.normal, s.point[0])) / NdotRayDirection;
+	if (inter.distance[0] < 0)
+		return (inter);
+	s.position = intersect_compute_position(r, inter.distance[0]);
+	if (vec3_dot(inter.normal, vec3_cross(vec3_sub(s.point[1], s.point[0]), vec3_sub(s.position, s.point[0]))) < 0
+	|| vec3_dot(inter.normal, vec3_cross(vec3_sub(s.point[2], s.point[1]), vec3_sub(s.position, s.point[1]))) < 0
+	|| vec3_dot(inter.normal, vec3_cross(vec3_sub(s.point[0], s.point[2]), vec3_sub(s.position, s.point[2]))) < 0)
+		return (inter);
+	inter.intersects = 1;
+	return (inter);
+}
 
 INTERSECT	intersect_sphere(t_primitive s, t_ray r)
 {
