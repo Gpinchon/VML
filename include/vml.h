@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 01:36:42 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 01:40:19 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,10 +180,12 @@ float			cubic(float start, float end, float percent);
 ** Matrix operations
 */
 
-MAT4			mat4_identity(void);
-MAT4			mat4_zero(void);
+MAT2			mat2_identity(void);
+MAT2			mat2_zero(void);
 MAT3			mat3_identity(void);
 MAT3			mat3_zero(void);
+MAT4			mat4_identity(void);
+MAT4			mat4_zero(void);
 MAT2			mat2_inverse(const MAT2 m);
 MAT3			mat3_inverse(const MAT3 m);
 MAT4			mat4_inverse(const MAT4 m);

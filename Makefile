@@ -6,12 +6,13 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/10 23:50:56 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/11 01:42:00 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libvml.a
-SRC		=	./src/mat/init.c			\
+SRC		=	./src/mat/identity.c		\
+			./src/mat/zero.c			\
 			./src/mat/adjugate.c		\
 			./src/mat/minors.c			\
 			./src/mat/convert.c			\
