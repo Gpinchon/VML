@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 18:21:54 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 19:02:31 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
 float			mat2_determinant(MAT2 m);
 float			mat3_determinant(MAT3 m);
 float			mat4_determinant(MAT4 m);
+MAT2			mat3_to_mat2(MAT3 m);
+MAT3			mat2_to_mat3(MAT2 m);
 MAT3			mat4_to_mat3(MAT4 m);
 MAT4			mat3_to_mat4(MAT3 m);
 
