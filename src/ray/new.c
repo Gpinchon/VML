@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_new.c                                          :+:      :+:    :+:   */
+/*   new.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 15:57:51 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 21:22:53 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 18:00:12 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,13 @@ INTERSECT	new_intersect()
 	return ((INTERSECT){
 		0, {0, 0}, (VEC3){0, 0, 0}, (VEC3){0, 0, 0}
 	});
+}
+
+PRIMITIVE	new_primitive(PRIM_TYPE type)
+{
+	PRIMITIVE	primitive;
+
+	memset(&primitive, 0, sizeof(PRIMITIVE));
+	primitive.type = type;
+	return(primitive);
 }

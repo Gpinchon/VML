@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/11 01:42:00 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/11 16:55:27 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC		=	./src/mat/identity.c		\
 			./src/vec/scale.c			\
 			./src/vec/interp.c			\
 			./src/ray/new.c				\
+			./src/ray/new_primitives.c	\
 			./src/ray/calc.c			\
 			./src/ray/primitives.c		\
 			./src/ray/primitives2.c		\

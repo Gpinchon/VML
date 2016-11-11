@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 01:40:19 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 18:21:54 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VML_H
 
 # include <math.h>
+# include <string.h>
 # define TO_RADIAN(x)	(x * M_PI / 180.f)
 # define VEC2			struct s_vec2
 # define VEC3			struct s_vec3
@@ -68,7 +69,7 @@ typedef struct	s_mat4
 enum e_prim_type
 {
 	sphere = 0x1,
-	plane = 0x3,
+	plane = 0x2,
 	cylinder = 0x3,
 	capped_cylinder = 0x31,
 	cone = 0x4,
@@ -112,7 +113,15 @@ MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
 FRUSTUM			new_frustum(float left, float right, float bottom, float top);
 RAY				new_ray(VEC3 origin, VEC3 direction);
-INTERSECT		new_intersect();
+INTERSECT		new_intersect(void);
+PRIMITIVE		new_primitive(PRIM_TYPE type);
+PRIMITIVE		new_sphere(float radius, VEC3 position);
+PRIMITIVE		new_cylinder(float radius, float size,
+				VEC3 position, VEC3 direction);
+PRIMITIVE		new_plane(VEC3 position, VEC3 direction);
+PRIMITIVE		new_cone(float radius, float size,
+				VEC3 position, VEC3 direction);
+PRIMITIVE		new_triangle(VEC3 a, VEC3 b, VEC3 c);
 
 /*
 ** Vectorial operations (in alphabetic order)
@@ -181,10 +190,10 @@ float			cubic(float start, float end, float percent);
 */
 
 MAT2			mat2_identity(void);
-MAT2			mat2_zero(void);
 MAT3			mat3_identity(void);
-MAT3			mat3_zero(void);
 MAT4			mat4_identity(void);
+MAT2			mat2_zero(void);
+MAT3			mat3_zero(void);
 MAT4			mat4_zero(void);
 MAT2			mat2_inverse(const MAT2 m);
 MAT3			mat3_inverse(const MAT3 m);

@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 16:03:56 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 23:23:46 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 18:03:55 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_vec2	vec2_normalize(t_vec2 v)
 {
 	float length;
 
-	if ((length = vec2_length(v)))
+	if ((length = vec2_length(v)) != 1.f
+	&& length)
 	{
 		return ((t_vec2){
 			v.x /= length,
@@ -30,7 +31,8 @@ t_vec3	vec3_normalize(t_vec3 v)
 {
 	float length;
 
-	if ((length = vec3_length(v)))
+	if ((length = vec3_length(v)) != 1.f
+	&& length)
 	{
 		return ((t_vec3){
 			v.x /= length,
@@ -45,7 +47,8 @@ t_vec4	vec4_normalize(t_vec4 v)
 {
 	float length;
 
-	if ((length = vec4_length(v)))
+	if ((length = vec4_length(v)) != 1.f
+	&& length)
 	{
 		return ((t_vec4){
 			v.x /= length,
