@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 01:49:41 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 01:57:28 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ INTERSECT	intersect_triangle(t_primitive t, t_ray r)
 
 	inter = new_intersect();
 	inter.normal = vec3_cross(vec3_sub(t.point[1], t.point[0]), vec3_sub(t.point[2], t.point[0]));
-	float NdotRayDirection = vec3_dot(inter.normal, r.direction);
-	if (fabs(NdotRayDirection) < FLOAT_ZERO)
+	float n_dot_r = vec3_dot(inter.normal, r.direction);
+	if (fabs(n_dot_r) < FLOAT_ZERO)
 		return (inter);
-	inter.distance[0] = inter.distance[1] = (vec3_dot(inter.normal, r.origin) + vec3_dot(inter.normal, t.point[0])) / NdotRayDirection;
+	inter.distance[0] = inter.distance[1] = (vec3_dot(inter.normal, r.origin) + vec3_dot(inter.normal, t.point[0])) / n_dot_r;
 	if (inter.distance[0] < 0)
 		return (inter);
 	t.position = intersect_compute_position(r, inter.distance[0]);
