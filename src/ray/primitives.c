@@ -6,14 +6,14 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 18:28:24 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 18:32:27 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
 /*
-** Credits to http://www.scratchapixel.com/ for the original function
+** Credits to http://www.scratchapixel.com/ for the original triangle function
 */
 
 INTERSECT	intersect_triangle(t_primitive t, t_ray r)
