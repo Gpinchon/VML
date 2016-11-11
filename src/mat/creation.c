@@ -6,11 +6,21 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 17:56:22 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 19:15:01 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
+
+
+t_mat3	mat3_translate(t_vec2 translation)
+{
+	return ((t_mat3){ .m = {
+		1, 0, translation.x,
+		0, 1, translation.y,
+		0, 0, 1,
+	}});
+}
 
 t_mat4	mat4_translate(t_vec3 translation)
 {

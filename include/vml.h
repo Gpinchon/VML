@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 19:02:31 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 19:15:30 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ MAT4			mat4_perspective(float fov, float aspect,
 				float z_near, float z_far);
 MAT4			mat4_orthographic(FRUSTUM frustum,
 				float z_near, float z_far);
+MAT3			mat3_translate(VEC2 translation);
 MAT4			mat4_translate(VEC3 translation);
 
 /*
