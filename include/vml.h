@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 01:21:38 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/11 01:36:42 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ MAT4			mat4_translate(VEC3 translation);
 INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
 INTERSECT		intersect_cylinder(PRIMITIVE cp, RAY r);
 INTERSECT		intersect_plane(PRIMITIVE cp, RAY r);
-INTERSECT		intersect_triangle(PRIMITIVE s, t_ray r);
+INTERSECT		intersect_triangle(PRIMITIVE t, t_ray r);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);
