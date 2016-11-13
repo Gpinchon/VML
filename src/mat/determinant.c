@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 23:47:49 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 16:06:25 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/13 16:39:31 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ float	mat3_determinant(t_mat3 m)
 	m.m[0] * m.m[5] * m.m[7] -
 	m.m[1] * m.m[3] * m.m[8]);
 }
+
+/*
+**	m[0]	m[1]	m[2]	m[3]
+**	m[4]	m[5]	m[6]	m[7]
+**	m[8]	m[9]	m[10]	m[11]
+**	m[12]	m[13]	m[14]	m[15]
+*/
 
 float	mat4_determinant(t_mat4 m)
 {

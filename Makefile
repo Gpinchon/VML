@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/11 16:55:27 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/13 17:30:52 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,10 +77,10 @@ OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
 	@($(CC) $(CFLAGS) -o $@ -c $<)
 	@echo "$(OK_STRING)"
 
-all: $(NAME)
-
 test:
 	$(CC) $(CFLAGS) $(TESTSRC) -L . -lvml -o vml_test
+
+all: $(NAME) test
 
 clean:
 	rm -rf $(OBJ) $(TESTOBJ)
