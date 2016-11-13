@@ -6,14 +6,14 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 01:00:03 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 01:55:40 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/13 15:08:46 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
 /*
-** returns the cofactor matrix
+** returns the transposed cofactor matrix
 */
 
 t_mat2	mat2_adjugate(const t_mat2 m)
