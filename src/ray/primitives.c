@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/13 14:58:21 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/13 15:11:28 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ INTERSECT	intersect_plane(t_primitive cp, t_ray r)
 	inter = new_intersect();
 	normal = vec3_negate(cp.direction);
 	denom = vec3_dot(normal, r.direction);
-	inter = new_intersect();
 	if (denom > FLOAT_ZERO)
 	{
 		if ((t = vec3_dot(vec3_sub(cp.position, r.origin), normal) / denom) >= FLOAT_ZERO)
