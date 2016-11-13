@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_calc.c                                       :+:      :+:    :+:   */
+/*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:05:07 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/09 19:52:18 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/13 15:06:49 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ char	solve_quadratic(float a, float b, float c, float *t)
 	discrim = (b * b - 4.f * a * c);
 	if (discrim <= 0)
 		return (0);
-	discrim = sqrtf(discrim);
-	q = -.5f * (b < 0 ? (b - discrim) : (b + discrim));
+	q = -.5f * (b < 0 ? (b - sqrtf(discrim)) : (b + sqrtf(discrim)));
 	t[0] = q / a;
 	t[1] = c / q;
 	if (t[0] > t[1])
