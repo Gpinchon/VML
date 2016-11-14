@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/13 17:30:52 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/14 18:35:50 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC		=	./src/mat/identity.c		\
 			./src/ray/primitives2.c		\
 			./src/ray/normals.c			\
 			./src/interp_functions.c	\
+			./src/float_functions.c		\
 			./src/float_equal.c
 
 TESTSRC	=	./test/test.c

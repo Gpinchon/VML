@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interp_functions.c                                 :+:      :+:    :+:   */
+/*   float_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/13 18:41:14 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:36:21 by gpinchon         ###   ########.fr       */
+/*   Created: 2016/11/14 18:35:23 by gpinchon          #+#    #+#             */
+/*   Updated: 2016/11/14 18:36:26 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	linear(float start, float end, float percent)
+float	clamp(float nbr, float min, float max)
 {
-	return (percent * (end - start) + start);
+	if (nbr >= max)
+		return (max);
+	else if (nbr <= min)
+		return (min);
+	else
+		return (nbr);
 }
 
-float	cubic(float start, float end, float percent)
+float	cycle(float nbr, float min, float max)
 {
-	percent = (percent * percent) * (3.f - (2.f * percent));
-	return (linear(start, end, percent));
+	if (nbr > max)
+		return (min);
+	else if (nbr < min)
+		return (max);
+	else
+		return (nbr);
+}
+
+float	step(float a, float x)
+{
+	return (x >= a);
 }

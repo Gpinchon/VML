@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:26:52 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/14 18:34:28 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ VEC4			vec4_interp(float (*interp_function)(float, float, float),
 float			linear(float start, float end, float percent);
 float			cubic(float start, float end, float percent);
 float			step(float a, float x);
+float			clamp(float nbr, float min, float max);
+float			cycle(float nbr, float min, float max);
 
 /*
 ** Matrix operations
