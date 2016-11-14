@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:34:28 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/14 19:12:47 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define FLOAT_ZERO		1E-6
 # define DOUBLE_ZERO	0.000001
 # define PRIM_TYPE		enum e_prim_type
+# define STEP(a, x)		(x >= a)
+# define CLAMP(nbr, min, max)	(nbr >= min ? min : nbr <= max ? max : nbr)
+# define CYCLE(nbr, min, max)	(nbr > min ? max : nbr < max ? min : nbr)
 
 typedef struct	s_vec2
 {
@@ -182,11 +185,10 @@ VEC3			vec3_interp(float (*interp_function)(float, float, float),
 				VEC3 start, VEC3 end, float percent);
 VEC4			vec4_interp(float (*interp_function)(float, float, float),
 				VEC4 start, VEC4 end, float percent);
-float			linear(float start, float end, float percent);
-float			cubic(float start, float end, float percent);
-float			step(float a, float x);
-float			clamp(float nbr, float min, float max);
-float			cycle(float nbr, float min, float max);
+float			interp_linear(float start, float end, float percent);
+float			interp_cubic(float start, float end, float percent);
+float			interp_clamp(float start, float end, float percent);
+float			interp_cycle(float start, float end, float percent);
 
 /*
 ** Matrix operations

@@ -6,17 +6,29 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 18:41:14 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 18:36:21 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/14 19:11:18 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float	linear(float start, float end, float percent)
+#include <vml.h>
+
+float	interp_linear(float start, float end, float percent)
 {
 	return (percent * (end - start) + start);
 }
 
-float	cubic(float start, float end, float percent)
+float	interp_cubic(float start, float end, float percent)
 {
 	percent = (percent * percent) * (3.f - (2.f * percent));
-	return (linear(start, end, percent));
+	return (interp_linear(start, end, percent));
+}
+
+float	interp_clamp(float start, float end, float percent)
+{
+	return (CLAMP(percent, start, end));
+}
+
+float	interp_cycle(float start, float end, float percent)
+{
+	return(CYCLE(percent, start, end));
 }
