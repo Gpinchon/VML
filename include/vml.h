@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 19:12:47 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/15 14:00:26 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,9 @@ VEC4			vec4_negate(VEC4 v);
 VEC2			vec2_normalize(VEC2 v);
 VEC3			vec3_normalize(VEC3 v);
 VEC4			vec4_normalize(VEC4 v);
+VEC2			vec2_pow(VEC2 v, float p);
+VEC3			vec3_pow(VEC3 v, float p);
+VEC4			vec4_pow(VEC4 v, float p);
 VEC2			vec2_proj(VEC2 v, VEC2 v1);
 VEC3			vec3_proj(VEC3 v, VEC3 v1);
 VEC4			vec4_proj(VEC4 v, VEC4 v1);
