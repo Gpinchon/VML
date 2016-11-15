@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/15 14:00:26 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/15 15:05:33 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ VEC2			vec2_add(VEC2 v, VEC2 v1);
 VEC3			vec3_add(VEC3 v, VEC3 v1);
 VEC4			vec4_add(VEC4 v, VEC4 v1);
 VEC3			vec3_cross(VEC3 v, VEC3 v1);
+float			vec2_distance(VEC2 v, VEC2 v1);
+float			vec3_distance(VEC3 v, VEC3 v1);
+float			vec4_distance(VEC4 v, VEC4 v1);
 VEC2			vec2_div(VEC2 v, VEC2 v1);
 VEC3			vec3_div(VEC3 v, VEC3 v1);
 VEC4			vec4_div(VEC4 v, VEC4 v1);
