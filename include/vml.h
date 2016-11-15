@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/15 15:51:33 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/15 16:49:24 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define DOUBLE_ZERO	0.000001
 # define PRIM_TYPE		enum e_prim_type
 # define STEP(a, x)		(x >= a)
-# define CLAMP(nbr, min, max)	(nbr >= min ? min : nbr <= max ? max : nbr)
+# define CLAMP(nbr, min, max)	(nbr <= min ? min : nbr >= max ? max : nbr)
 # define CYCLE(nbr, min, max)	(nbr > min ? max : nbr < max ? min : nbr)
 
 typedef struct	s_vec2
