@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/15 15:05:33 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/15 15:51:33 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ VEC4			vec3_to_vec4(VEC3 v, float w);
 ** Interpolation functions
 */
 
+VEC2			vec2_interp(float (*interp_function)(float, float, float),
+				VEC2 start, VEC2 end, float percent);
 VEC3			vec3_interp(float (*interp_function)(float, float, float),
 				VEC3 start, VEC3 end, float percent);
 VEC4			vec4_interp(float (*interp_function)(float, float, float),
