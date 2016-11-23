@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/15 15:06:02 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/11/23 23:40:58 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRC		=	./src/mat/identity.c		\
 			./src/ray/primitives2.c		\
 			./src/ray/normals.c			\
 			./src/interp_functions.c	\
-			./src/float_equal.c
+			./src/float_equal.c			\
+			./src/vml_memset.c
 
 TESTSRC	=	./test/test.c
 TESTOBJ	= $(TESTSRC:.c=.o)

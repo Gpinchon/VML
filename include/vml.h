@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/15 16:49:24 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/23 23:43:29 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define VML_H
 
 # include <math.h>
-# include <string.h>
 # define VEC2			struct s_vec2
 # define VEC3			struct s_vec3
 # define VEC4			struct s_vec4
@@ -274,5 +273,6 @@ VEC3			plane_normal(VEC3 position, PRIMITIVE p);
 VEC3			cone_normal(VEC3 position, PRIMITIVE p);
 
 char			float_equal(float a, float b);
+void			*vml_memset(void *dst, int c, size_t n);
 
 #endif

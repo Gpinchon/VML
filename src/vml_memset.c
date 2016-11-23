@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new.c                                              :+:      :+:    :+:   */
+/*   vml_memset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 15:57:51 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 18:29:58 by gpinchon         ###   ########.fr       */
+/*   Created: 2016/11/23 23:09:34 by gpinchon          #+#    #+#             */
+/*   Updated: 2016/11/23 23:42:33 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vml.h>
-
-RAY			new_ray(VEC3 origin, VEC3 direction)
+void	*vml_memset(void *dst, int c, unsigned int n)
 {
-	return ((RAY){origin, direction});
-}
+	char	*d;
 
-INTERSECT	new_intersect()
-{
-	INTERSECT	intersect;
-
-	vml_memset(&intersect, 0, sizeof(INTERSECT));
-	return (intersect);
-}
-
-PRIMITIVE	new_primitive(PRIM_TYPE type)
-{
-	PRIMITIVE	primitive;
-
-	vml_memset(&primitive, 0, sizeof(PRIMITIVE));
-	primitive.type = type;
-	return(primitive);
+	if (dst && n)
+	{
+		d = dst;
+		while (n--)
+		{
+			d[n] = c;
+		}
+	}
+	return (dst);
 }
