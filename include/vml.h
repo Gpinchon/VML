@@ -15,7 +15,6 @@
 
 # include <math.h>
 # include <string.h>
-# define TO_RADIAN(x)	(x * M_PI / 180.f)
 # define VEC2			struct s_vec2
 # define VEC3			struct s_vec3
 # define VEC4			struct s_vec4
@@ -29,6 +28,7 @@
 # define FLOAT_ZERO		1E-6
 # define DOUBLE_ZERO	0.000001
 # define PRIM_TYPE		enum e_prim_type
+# define TO_RADIAN(x)	(x * 0.01745329251994329576923690768489f)
 # define STEP(a, x)		(x >= a)
 # define CLAMP(nbr, min, max)	(nbr <= min ? min : nbr >= max ? max : nbr)
 # define CYCLE(nbr, min, max)	(nbr > min ? max : nbr < max ? min : nbr)
