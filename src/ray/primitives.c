@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/25 17:40:55 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/11/25 22:17:17 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,36 +61,39 @@ INTERSECT	intersect_sphere(t_primitive s, t_ray r)
 
 INTERSECT intersect_cylinder(t_primitive cp, t_ray r)
 {
-	t_vec3	v[6];
-	float	f[4];
-	INTERSECT	inter;
+	t_vec3		v[6];
+	INTERSECT	i;
 
-	inter = new_intersect();
+	i = new_intersect();
 	v[0] = vec3_proj(cp.position, cp.direction);
 	v[1] = vec3_sub(cp.position, v[0]);
 	v[2] = vec3_proj(r.origin, cp.direction);
 	v[3] = vec3_proj(r.direction, cp.direction);
 	v[4] = vec3_sub(r.direction, v[3]);
 	v[5] = vec3_sub(vec3_sub(r.origin, v[2]), v[1]);
-	f[0] = vec3_dot(v[4], v[4]);
-	f[1] = vec3_dot(v[5], v[4]) * 2.0;
-	f[2] = vec3_dot(v[5], v[5]) - (cp.radius2);
-	if ((f[3] = (f[1] * f[1]) - (4.0 * f[0] * f[2])) <= FLOAT_ZERO)
-		return (inter);
-	f[3] = sqrt(f[3]);
-	inter.distance[0] = (-f[1] - f[3]) / (2.0 * f[0]);
-	inter.distance[1] = (-f[1] + f[3]) / (2.0 * f[0]);
+	if (!(i.intersects = solve_quadratic(vec3_dot(v[4], v[4]),
+		vec3_dot(v[5], v[4]) * 2.0, vec3_dot(v[5], v[5]) - (cp.radius2), i.distance)))
+		return (i);
 	if (cp.size > 0 && vec3_length(vec3_sub(vec3_add(v[2],
-		vec3_scale(v[3], inter.distance[0])), v[0])) >= cp.size / 2)
-		inter.distance[0] = 0;
+		vec3_scale(v[3], i.distance[0])), v[0])) >= cp.size / 2)
+		i.distance[0] = 0;
 	if (cp.size > 0 && vec3_length(vec3_sub(vec3_add(v[2],
-		vec3_scale(v[3], inter.distance[1])), v[0])) >= cp.size / 2)
-		inter.distance[1] = 0;
-	if (!(inter.intersects = intersect_test(inter.distance)))
-		return (inter);
-	inter.position = intersect_compute_position(r, inter.distance[0]);
-	inter.normal = cylinder_normal(inter.position, cp);
-	return (inter);
+		vec3_scale(v[3], i.distance[1])), v[0])) >= cp.size / 2)
+		i.distance[1] = 0;
+	if (!(i.intersects = intersect_test(i.distance)))
+		return (i);
+	if (!i.distance[0])
+	{
+		i.distance[0] = i.distance[1];
+		i.position = intersect_compute_position(r, i.distance[0]);
+		i.normal = vec3_negate(cylinder_normal(i.position, cp));
+	}
+	else
+	{
+		i.position = intersect_compute_position(r, i.distance[0]);
+		i.normal = cylinder_normal(i.position, cp);
+	}
+	return (i);
 }
 
 INTERSECT	intersect_plane(t_primitive cp, t_ray r)
