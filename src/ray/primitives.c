@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/25 22:17:17 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/01 00:29:01 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,17 @@ INTERSECT	intersect_sphere(t_primitive s, t_ray r)
 				vec3_dot(eye, eye) - (s.radius2),
 				inter.distance) && intersect_test(inter.distance)))
 		return (inter);
-	inter.position = intersect_compute_position(r, inter.distance[0]);
-	inter.normal = sphere_normal(inter.position, s);
+	if (inter.distance[0] <= 0)
+	{
+		inter.distance[0] = inter.distance[1];
+		inter.position = intersect_compute_position(r, inter.distance[0]);
+		inter.normal = vec3_negate(sphere_normal(inter.position, s));
+	}
+	else
+	{
+		inter.position = intersect_compute_position(r, inter.distance[0]);
+		inter.normal = sphere_normal(inter.position, s);
+	}
 	return (inter);
 }
 
