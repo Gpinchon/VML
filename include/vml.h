@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/02 18:01:20 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/02 20:02:00 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,57 @@ enum e_prim_type
 	triangle = 0x5
 };
 
-typedef	struct	s_primitive
+typedef struct	s_sphere
 {
-	PRIM_TYPE	type;
+	VEC3		position;
+	float		radius;
+	float		radius2;
+}				t_sphere;
+
+typedef struct	s_plane
+{
+	VEC3		position;
+	VEC3		direction;
+}				t_plane;
+
+typedef struct	s_cylinder
+{
+	VEC3		position;
+	VEC3		direction;
 	float		radius;
 	float		radius2;
 	float		size;
-	VEC3		point[3];
+}				t_cylinder;
+
+typedef struct	s_cone
+{
 	VEC3		position;
 	VEC3		direction;
+	float		radius;
+	float		radius2;
+	float		size;
+}				t_cone;
+
+typedef struct	s_triangle
+{
+	VEC3		position;
+	VEC3		point[3];
+	VEC3		normal[3];
+}				t_triangle;
+
+typedef union	u_obj
+{
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
+	t_cone		cone;
+	t_triangle	triangle;
+}				u_obj;
+
+typedef	struct	s_primitive
+{
+	PRIM_TYPE	type;
+	u_obj		data;
 }				t_primitive;
 
 typedef struct	s_ray
