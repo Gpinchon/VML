@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/01 00:29:01 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/02 23:46:52 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ INTERSECT intersect_cylinder(t_primitive cp, t_ray r)
 		i.distance[1] = 0;
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
-	if (!i.distance[0])
+	if (i.distance[0] <= 0)
 	{
 		i.distance[0] = i.distance[1];
 		i.position = intersect_compute_position(r, i.distance[0]);
