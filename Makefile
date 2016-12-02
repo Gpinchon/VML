@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/11/29 17:57:26 by gpinchon         ###   ########.fr        #
+#    Updated: 2016/12/02 18:00:32 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ SRC		=	./src/mat/identity.c		\
 			./src/mat/projection.c		\
 			./src/mat/transpose.c		\
 			./src/vec/new.c				\
+			./src/vec/inverse.c			\
+			./src/vec/reflect.c			\
+			./src/vec/refract.c			\
 			./src/vec/div.c				\
 			./src/vec/fdiv.c			\
 			./src/vec/proj.c			\

@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/29 17:56:58 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/02 18:01:20 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,12 @@ VEC4			vec4_fadd(VEC4 v, float d);
 VEC2			vec2_fdiv(VEC2 v, float d);
 VEC3			vec3_fdiv(VEC3 v, float d);
 VEC4			vec4_fdiv(VEC4 v, float d);
+VEC2			vec2_inverse(VEC2 v);
+VEC3			vec3_inverse(VEC3 v);
+VEC4			vec4_inverse(VEC4 v);
+VEC3			vec3_reflect(VEC3 v, VEC3 n);
+VEC3			vec3_refract(VEC3 incident, VEC3 normal,
+				float ior, float aior);
 float			vec2_length(VEC2 v);
 float			vec3_length(VEC3 v);
 float			vec4_length(VEC4 v);
@@ -166,6 +172,12 @@ VEC4			vec4_pow(VEC4 v, float p);
 VEC2			vec2_proj(VEC2 v, VEC2 v1);
 VEC3			vec3_proj(VEC3 v, VEC3 v1);
 VEC4			vec4_proj(VEC4 v, VEC4 v1);
+VEC2			vec2_inverse(VEC2 v);
+VEC3			vec3_inverse(VEC3 v);
+VEC4			vec4_inverse(VEC4 v);
+VEC3			vec3_reflect(VEC3 v, VEC3 n);
+VEC3			vec3_refract(VEC3 incident, VEC3 normal,
+				float ior, float aior);
 VEC2			vec2_saturate(VEC2 v);
 VEC3			vec3_saturate(VEC3 v);
 VEC4			vec4_saturate(VEC4 v);
@@ -257,6 +269,8 @@ MAT4			mat4_orthographic(FRUSTUM frustum,
 				float z_near, float z_far);
 MAT3			mat3_translate(VEC2 translation);
 MAT4			mat4_translate(VEC3 translation);
+float			refraction_medium(VEC3 incident, VEC3 normal,
+				float ior, float aior);
 
 /*
 ** Ray-tracing related functions
