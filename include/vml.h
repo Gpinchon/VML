@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/02 18:01:20 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/03 21:59:34 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct	s_intersect
 ** Variable creation functions
 */
 
+VEC2			new_vec2(float x, float y);
 VEC3			new_vec3(float x, float y, float z);
 VEC4			new_vec4(float x, float y, float z, float w);
 MAT2			new_mat2(VEC2 a, VEC2 b);
