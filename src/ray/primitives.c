@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 12:40:38 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 13:01:01 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ INTERSECT	intersect_disc(t_primitive d, t_ray r)
 	INTERSECT	inter;
 
 	inter = intersect_plane(d, r);
-	inter.intersects = vec3_distance(inter.position, d.position) <= d.radius;
+	inter.intersects = inter.intersects
+	&& vec3_distance(inter.position, d.position) <= d.radius;
 	return (inter);
 }
 
@@ -124,7 +125,7 @@ INTERSECT	intersect_plane(t_primitive cp, t_ray r)
 	inter = new_intersect();
 	normal = vec3_negate(cp.direction);
 	denom = vec3_dot(normal, r.direction);
-	if (denom > FLOAT_ZERO)
+	if (!float_equal(denom, 0.f))
 	{
 		if ((t = vec3_dot(vec3_sub(cp.position, r.origin), normal) / denom) >= FLOAT_ZERO)
 		{
