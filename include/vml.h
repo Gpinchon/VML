@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 15:00:49 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 15:16:57 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ INTERSECT		new_intersect(void);
 PRIMITIVE		new_primitive(PRIM_TYPE type);
 PRIMITIVE		new_sphere(float radius, VEC3 position);
 PRIMITIVE		new_cylinder(float radius, float size,
+				VEC3 position, VEC3 direction);
+PRIMITIVE		new_capped_cylinder(float radius, float size,
 				VEC3 position, VEC3 direction);
 PRIMITIVE		new_disc(float radius, VEC3 position, VEC3 direction);
 PRIMITIVE		new_plane(VEC3 position, VEC3 direction);
