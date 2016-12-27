@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 13:01:01 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 14:59:48 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,24 +83,27 @@ INTERSECT intersect_cylinder(t_primitive cp, t_ray r)
 	if (!(i.intersects = solve_quadratic(vec3_dot(v[4], v[4]),
 		vec3_dot(v[5], v[4]) * 2.0, vec3_dot(v[5], v[5]) - (cp.radius2), i.distance)))
 		return (i);
-	if (cp.size > 0 && vec3_length(vec3_sub(vec3_add(v[2],
-		vec3_scale(v[3], i.distance[0])), v[0])) >= cp.size / 2)
-		i.distance[0] = 0;
-	if (cp.size > 0 && vec3_length(vec3_sub(vec3_add(v[2],
-		vec3_scale(v[3], i.distance[1])), v[0])) >= cp.size / 2)
-		i.distance[1] = 0;
+	if (cp.size > 0)
+	{
+		i.distance[0] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[0])), v[0])) <= cp.size / 2.f);
+		i.distance[1] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[1])), v[0])) <= cp.size / 2.f);
+	}
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
 	if (i.distance[0] <= 0)
 	{
-		i.distance[0] = i.distance[1];
-		i.position = intersect_compute_position(r, i.distance[0]);
+		i.position = intersect_compute_position(r, (i.distance[0] = i.distance[1]));
 		i.normal = vec3_negate(cylinder_normal(i.position, cp));
 	}
 	else
 	{
 		i.position = intersect_compute_position(r, i.distance[0]);
 		i.normal = cylinder_normal(i.position, cp);
+	}
+	if (cp.type == capped_cylinder)
+	{
+		cp.position = vec3_add(v[2], vec3_scale(v[3], i.distance[0]));
+		intersect_disc(cp, r);
 	}
 	return (i);
 }

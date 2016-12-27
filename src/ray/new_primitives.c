@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 16:55:08 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 12:51:43 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 14:48:15 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,6 @@ PRIMITIVE	new_sphere(float radius, VEC3 position)
 	s.position = position;
 	s.radius2 = (s.radius = radius) * radius;
 	return (s);
-}
-
-PRIMITIVE	new_cylinder(float radius, float size,
-	VEC3 position, VEC3 direction)
-{
-	PRIMITIVE	c;
-
-	c = new_primitive(cylinder);
-	c.position = position;
-	c.direction = vec3_normalize(direction);
-	c.radius2 = (c.radius = radius) * radius;
-	c.size = size;
-	return (c);
-}
-
-PRIMITIVE	new_disc(VEC3 position, VEC3 direction, float radius)
-{
-	PRIMITIVE	p;
-
-	p = new_primitive(disc);
-	p.position = position;
-	p.direction = direction;
-	p.radius = radius;
-	p.radius2 = radius * radius;
-	return (p);
-}
-
-PRIMITIVE	new_plane(VEC3 position, VEC3 direction)
-{
-	PRIMITIVE	p;
-
-	p = new_primitive(plane);
-	p.position = position;
-	p.direction = direction;
-	return (p);
 }
 
 PRIMITIVE	new_cone(float radius, float size,
