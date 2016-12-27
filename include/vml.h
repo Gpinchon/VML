@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 15:16:57 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 15:22:59 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ enum e_prim_type
 	sphere = 0x1,
 	plane = 0x2,
 	cylinder = 0x3,
-	capped_cylinder = 0x31,
-	cone = 0x4,
-	capped_cone = 0x41,
-	triangle = 0x5,
-	disc = 0x6
+	capped_cylinder = 0x4,
+	cone = 0x5,
+	capped_cone = 0x6,
+	triangle = 0x7,
+	disc = 0x8
 };
 
 typedef	struct	s_primitive
