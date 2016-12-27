@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/03 21:59:34 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 12:41:50 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ enum e_prim_type
 	capped_cylinder = 0x31,
 	cone = 0x4,
 	capped_cone = 0x41,
-	triangle = 0x5
+	triangle = 0x5,
+	disc = 0x6
 };
 
 typedef	struct	s_primitive
@@ -279,6 +280,7 @@ float			refraction_medium(VEC3 incident, VEC3 normal,
 
 INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
 INTERSECT		intersect_cylinder(PRIMITIVE cp, RAY r);
+INTERSECT		intersect_disc(t_primitive d, t_ray r);
 INTERSECT		intersect_plane(PRIMITIVE cp, RAY r);
 INTERSECT		intersect_triangle(PRIMITIVE t, t_ray r);
 INTERSECT		intersect_cone(t_primitive cp, t_ray r);
