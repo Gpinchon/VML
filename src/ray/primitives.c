@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 14:59:48 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 16:34:26 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,6 @@ INTERSECT intersect_cylinder(t_primitive cp, t_ray r)
 	{
 		i.position = intersect_compute_position(r, i.distance[0]);
 		i.normal = cylinder_normal(i.position, cp);
-	}
-	if (cp.type == capped_cylinder)
-	{
-		cp.position = vec3_add(v[2], vec3_scale(v[3], i.distance[0]));
-		intersect_disc(cp, r);
 	}
 	return (i);
 }
