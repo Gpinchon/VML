@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 16:55:08 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 12:45:07 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/27 12:51:43 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ PRIMITIVE	new_disc(VEC3 position, VEC3 direction, float radius)
 {
 	PRIMITIVE	p;
 
-	p = new_primitive(plane);
+	p = new_primitive(disc);
 	p.position = position;
 	p.direction = direction;
 	p.radius = radius;
