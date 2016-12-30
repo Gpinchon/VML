@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 15:22:59 by gpinchon         ###   ########.fr       */
+/*   Updated: 2016/12/30 02:32:31 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define TO_RADIAN(x)	(x * 0.01745329251994329576923690768489f)
 # define STEP(a, x)		(x >= a)
 # define CLAMP(nbr, min, max)	(nbr <= min ? min : nbr >= max ? max : nbr)
-# define CYCLE(nbr, min, max)	(nbr > min ? max : nbr < max ? min : nbr)
+# define CYCLE(nbr, min, max)	(nbr >= min ? max : nbr <= max ? min : nbr)
 
 typedef struct	s_vec2
 {
