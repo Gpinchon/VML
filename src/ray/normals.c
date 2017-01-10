@@ -25,10 +25,13 @@ VEC3	cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t)
 
 VEC3	sphere_normal(VEC3 position, OBJ p, TRANSFORM *t)
 {
+	VEC3	pos;
+
+	pos = t->position;
 	return (vec3_normalize((VEC3){
-				(position.x - t->position.x) / p.sphere.radius,
-				(position.y - t->position.y) / p.sphere.radius,
-				(position.z - t->position.z) / p.sphere.radius
+				(position.x - pos.x) / p.sphere.radius,
+				(position.y - pos.y) / p.sphere.radius,
+				(position.z - pos.z) / p.sphere.radius
 			}));
 }
 
@@ -44,9 +47,11 @@ VEC3	cone_normal(VEC3 position, OBJ p, TRANSFORM *t)
 	float	radius;
 	VEC3	ctop;
 	VEC3	qtop;
+	VEC3	rot; 
 
+	rot = t->rotation;
 	ctop = vec3_sub(position, t->position);
-	radius = vec3_dot((ctop), t->rotation);
-	qtop = vec3_sub(ctop, vec3_scale(t->rotation, radius));
+	radius = vec3_dot((ctop), rot);
+	qtop = vec3_sub(ctop, vec3_scale(rot, radius));
 	return (vec3_normalize(vec3_fdiv(qtop, p.cone.radius)));
 }

@@ -78,13 +78,17 @@ INTERSECT	intersect_sphere(u_obj p, t_ray r, TRANSFORM *transform)
 INTERSECT intersect_cylinder(u_obj p, t_ray r, TRANSFORM *transform)
 {
 	t_vec3		v[6];
+	VEC3		pos;
+	VEC3		rot;
 	INTERSECT	i;
 
 	i = new_intersect();
-	v[0] = vec3_proj(transform->position, transform->rotation);
-	v[1] = vec3_sub(transform->position, v[0]);
-	v[2] = vec3_proj(r.origin, transform->rotation);
-	v[3] = vec3_proj(r.direction, transform->rotation);
+	pos = transform->position;
+	rot = transform->rotation;
+	v[0] = vec3_proj(pos, rot);
+	v[1] = vec3_sub(pos, v[0]);
+	v[2] = vec3_proj(r.origin, rot);
+	v[3] = vec3_proj(r.direction, rot);
 	v[4] = vec3_sub(r.direction, v[3]);
 	v[5] = vec3_sub(vec3_sub(r.origin, v[2]), v[1]);
 	if (!(i.intersects = solve_quadratic(vec3_dot(v[4], v[4]),
