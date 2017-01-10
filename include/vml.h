@@ -135,7 +135,6 @@ typedef struct	s_cone
 typedef struct	s_triangle
 {
 	VEC3		point[3];
-	VEC3		normal[3];
 }				t_triangle;
 
 typedef union	u_obj
