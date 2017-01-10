@@ -60,6 +60,8 @@ SRC		=	./src/mat/identity.c		\
 			./src/ray/primitives.c		\
 			./src/ray/primitives2.c		\
 			./src/ray/normals.c			\
+			./src/transform/new.c		\
+			./src/transform/update.c	\
 			./src/interp_functions.c	\
 			./src/float_equal.c			\
 			./src/vml_memset.c

@@ -12,47 +12,38 @@
 
 #include <vml.h>
 
-PRIMITIVE	new_sphere(float radius, VEC3 position)
+PRIMITIVE	new_sphere(float radius)
 {
 	PRIMITIVE	s;
 
 	s = new_primitive(sphere);
-	s.data.sphere.position = position;
 	s.data.sphere.radius2 = (s.data.sphere.radius = radius) * radius;
 	return (s);
 }
 
-PRIMITIVE	new_cylinder(float radius, float size,
-	VEC3 position, VEC3 direction)
+PRIMITIVE	new_cylinder(float radius, float size)
 {
 	PRIMITIVE	c;
 
 	c = new_primitive(cylinder);
-	c.data.cylinder.position = position;
-	c.data.cylinder.direction = vec3_normalize(direction);
 	c.data.cylinder.radius2 = (c.data.cylinder.radius = radius) * radius;
 	c.data.cylinder.size = size;
 	return (c);
 }
 
-PRIMITIVE	new_plane(VEC3 position, VEC3 direction)
+PRIMITIVE	new_plane(void)
 {
 	PRIMITIVE	p;
 
 	p = new_primitive(plane);
-	p.data.plane.position = position;
-	p.data.plane.direction = direction;
 	return (p);
 }
 
-PRIMITIVE	new_cone(float radius, float size,
-	VEC3 position, VEC3 direction)
+PRIMITIVE	new_cone(float radius, float size)
 {
 	PRIMITIVE	c;
 
 	c = new_primitive(cone);
-	c.data.cone.position = position;
-	c.data.cone.direction = vec3_normalize(direction);
 	c.data.cone.radius2 = (c.data.cone.radius = radius) * radius;
 	c.data.cone.size = size;
 	return c;
