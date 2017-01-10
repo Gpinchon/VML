@@ -32,11 +32,9 @@ void	transform_set_target(TRANSFORM *transform, TRANSFORM *target)
 		return ;
 	if (!target->updated)
 		transform_update(target);
-	transform_update(transform);
 	direction = vec3_normalize(vec3_sub(target->position, transform->position));
 	transform->rotation = (VEC3){asin(direction.y), -atan2(direction.x, direction.z), transform->rotation.z};
-	transform->transform = mat4_combine(transform->translate,
-		transform->rotate, transform->scale);
+	transform_update(transform);
 }
 
 void	transform_set_parent(TRANSFORM *transform, TRANSFORM *parent)
