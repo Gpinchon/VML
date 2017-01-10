@@ -79,6 +79,7 @@ CFLAGS	= -Ofast -Wall -Wextra -Wall -I ./include
 
 $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
