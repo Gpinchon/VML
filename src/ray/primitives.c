@@ -16,7 +16,7 @@
 ** Credits to http://www.scratchapixel.com/ for the original triangle function
 */
 
-INTERSECT	intersect_triangle(t_primitive p, t_ray r, TRANSFORM *transform)
+INTERSECT	intersect_triangle(u_obj p, t_ray r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 	t_triangle	t;
@@ -24,7 +24,7 @@ INTERSECT	intersect_triangle(t_primitive p, t_ray r, TRANSFORM *transform)
 	VEC3		tp[3];
 
 	inter = new_intersect();
-	t = p.data.triangle;
+	t = p.triangle;
 	tp[0] = mat4_mult_vec3(transform->transform, t.point[0]);
 	tp[1] = mat4_mult_vec3(transform->transform, t.point[1]);
 	tp[2] = mat4_mult_vec3(transform->transform, t.point[2]);
@@ -43,7 +43,7 @@ INTERSECT	intersect_triangle(t_primitive p, t_ray r, TRANSFORM *transform)
 	(void)transform;
 }
 
-INTERSECT	intersect_sphere(t_primitive p, t_ray r, TRANSFORM *transform)
+INTERSECT	intersect_sphere(u_obj p, t_ray r, TRANSFORM *transform)
 {
 	t_vec3		eye;
 	INTERSECT	inter;
@@ -53,7 +53,7 @@ INTERSECT	intersect_sphere(t_primitive p, t_ray r, TRANSFORM *transform)
 	if (!(inter.intersects = solve_quadratic(
 				vec3_dot(r.direction, r.direction),
 				vec3_dot(eye, r.direction) * 2.0,
-				vec3_dot(eye, eye) - (p.data.sphere.radius2),
+				vec3_dot(eye, eye) - (p.sphere.radius2),
 				inter.distance) && intersect_test(inter.distance)))
 		return (inter);
 	if (inter.distance[0] <= 0)
@@ -75,7 +75,7 @@ INTERSECT	intersect_sphere(t_primitive p, t_ray r, TRANSFORM *transform)
 ** (Other than creating a "sphere" along the cylinder's axis...)
 */
 
-INTERSECT intersect_cylinder(t_primitive p, t_ray r, TRANSFORM *transform)
+INTERSECT intersect_cylinder(u_obj p, t_ray r, TRANSFORM *transform)
 {
 	t_vec3		v[6];
 	INTERSECT	i;
@@ -88,12 +88,12 @@ INTERSECT intersect_cylinder(t_primitive p, t_ray r, TRANSFORM *transform)
 	v[4] = vec3_sub(r.direction, v[3]);
 	v[5] = vec3_sub(vec3_sub(r.origin, v[2]), v[1]);
 	if (!(i.intersects = solve_quadratic(vec3_dot(v[4], v[4]),
-		vec3_dot(v[5], v[4]) * 2.0, vec3_dot(v[5], v[5]) - (p.data.cylinder.radius2), i.distance)))
+		vec3_dot(v[5], v[4]) * 2.0, vec3_dot(v[5], v[5]) - (p.cylinder.radius2), i.distance)))
 		return (i);
-	if (p.data.cylinder.size > 0)
+	if (p.cylinder.size > 0)
 	{
-		i.distance[0] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[0])), v[0])) <= p.data.cylinder.size / 2.f);
-		i.distance[1] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[1])), v[0])) <= p.data.cylinder.size / 2.f);
+		i.distance[0] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[0])), v[0])) <= p.cylinder.size / 2.f);
+		i.distance[1] *= (vec3_length(vec3_sub(vec3_add(v[2], vec3_scale(v[3], i.distance[1])), v[0])) <= p.cylinder.size / 2.f);
 	}
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
@@ -111,7 +111,7 @@ INTERSECT intersect_cylinder(t_primitive p, t_ray r, TRANSFORM *transform)
 	return (i);
 }
 
-INTERSECT	intersect_plane(t_primitive p, t_ray r, TRANSFORM *transform)
+INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 	t_vec3		normal;
@@ -129,17 +129,19 @@ INTERSECT	intersect_plane(t_primitive p, t_ray r, TRANSFORM *transform)
 			inter.distance[0] = inter.distance[1] = t;
 			inter.position = intersect_compute_position(r, inter.distance[0]);
 			inter.normal = plane_normal(inter.position, p, transform);
+			if (denom < 0)
+				inter.normal = vec3_negate(inter.normal);
 		}
 	}
 	return (inter);
 }
 
-INTERSECT	intersect_disc(t_primitive d, t_ray r, TRANSFORM *transform)
+INTERSECT	intersect_disc(u_obj d, t_ray r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 
 	inter = intersect_plane(d, r, transform);
 	inter.intersects = inter.intersects
-	&& vec3_distance(inter.position, transform->position) <= d.data.disc.radius;
+	&& vec3_distance(inter.position, transform->position) <= d.disc.radius;
 	return (inter);
 }

@@ -24,6 +24,7 @@
 # define INTERSECT		struct s_intersect
 # define PRIMITIVE		struct s_primitive
 # define TRANSFORM		struct s_transform
+# define OBJ			union u_obj
 # define VMLBOOL		enum e_vmlbool
 # define FRUSTUM		VEC4
 # define FLOAT_ZERO		1E-6
@@ -348,19 +349,19 @@ float			refraction_medium(VEC3 incident, VEC3 normal,
 ** Ray-tracing related functions
 */
 
-INTERSECT		intersect_sphere(PRIMITIVE s, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_cylinder(PRIMITIVE cp, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_plane(PRIMITIVE cp, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_triangle(PRIMITIVE t, t_ray r, TRANSFORM *transform);
-INTERSECT		intersect_cone(t_primitive cp, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_sphere(OBJ s, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_cylinder(OBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_plane(OBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_triangle(OBJ t, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_cone(OBJ cp, t_ray r, TRANSFORM *transform);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);
 float			find_closest(float t[2]);
-VEC3			cylinder_normal(VEC3 position, t_primitive p, TRANSFORM *t);
-VEC3			sphere_normal(VEC3 position, t_primitive p, TRANSFORM *t);
-VEC3			plane_normal(VEC3 position, t_primitive p, TRANSFORM *t);
-VEC3			cone_normal(VEC3 position, t_primitive p, TRANSFORM *t);
+VEC3			cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			sphere_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			plane_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			cone_normal(VEC3 position, OBJ p, TRANSFORM *t);
 
 char			float_equal(float a, float b);
 void			*vml_memset(void *dst, int c, unsigned int n);
