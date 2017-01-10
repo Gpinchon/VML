@@ -352,6 +352,7 @@ float			refraction_medium(VEC3 incident, VEC3 normal,
 INTERSECT		intersect_sphere(OBJ s, RAY r, TRANSFORM *transform);
 INTERSECT		intersect_cylinder(OBJ cp, RAY r, TRANSFORM *transform);
 INTERSECT		intersect_plane(OBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_disc(OBJ d, t_ray r, TRANSFORM *transform);
 INTERSECT		intersect_triangle(OBJ t, t_ray r, TRANSFORM *transform);
 INTERSECT		intersect_cone(OBJ cp, t_ray r, TRANSFORM *transform);
 VEC3			intersect_compute_position(RAY r, float distance);
