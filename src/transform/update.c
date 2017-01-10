@@ -21,7 +21,7 @@ void	transform_update(TRANSFORM *transform)
 	transform->scale = mat4_scale(transform->scaling);
 	transform->transform = mat4_combine(transform->translate,
 		transform->rotate, transform->scale);
-	transform->updated = 1;
+	transform->updated = vmltrue;
 }
 
 void	transform_set_target(TRANSFORM *transform, TRANSFORM *target)

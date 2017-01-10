@@ -16,6 +16,7 @@ TRANSFORM	new_transform(VEC3 position, VEC3 rotation, VEC3 scaling, VEC3 up)
 {
 	TRANSFORM	t;
 
+	vml_memset(&t, 0, sizeof(TRANSFORM));
 	t.position = position;
 	t.rotation = rotation;
 	t.scaling = scaling;
