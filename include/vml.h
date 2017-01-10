@@ -37,7 +37,7 @@
 enum			e_vmlbool
 {
 	vmlfalse = 0,
-	vmltrue = !false
+	vmltrue = !vmlfalse
 };
 
 typedef struct	s_vec2
