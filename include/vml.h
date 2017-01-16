@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/07 16:34:02 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:36:03 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,6 +364,7 @@ VEC3			plane_normal(VEC3 position, OBJ p, TRANSFORM *t);
 VEC3			cone_normal(VEC3 position, OBJ p, TRANSFORM *t);
 
 char			float_equal(float a, float b);
+float			fract(float f);
 void			*vml_memset(void *dst, int c, unsigned int n);
 
 #endif
