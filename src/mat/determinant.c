@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 23:47:49 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/13 16:39:31 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/20 17:27:36 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-float	mat2_determinant(t_mat2 m)
+inline float	mat2_determinant(t_mat2 m)
 {
 	return (m.m[0] * m.m[3] - m.m[2] * m.m[1]);
 }
@@ -23,7 +23,7 @@ float	mat2_determinant(t_mat2 m)
 ** m[6] m[7] m[8] m[6] m[7]
 */
 
-float	mat3_determinant(t_mat3 m)
+inline float	mat3_determinant(t_mat3 m)
 {
 	return (
 	m.m[0] * m.m[4] * m.m[8] +
@@ -41,7 +41,7 @@ float	mat3_determinant(t_mat3 m)
 **	m[12]	m[13]	m[14]	m[15]
 */
 
-float	mat4_determinant(t_mat4 m)
+inline float	mat4_determinant(t_mat4 m)
 {
 	return (
 	m.m[3] * m.m[6] * m.m[9] * m.m[12] - m.m[2] * m.m[7] * m.m[9] * m.m[12] -

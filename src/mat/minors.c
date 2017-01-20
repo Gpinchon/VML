@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 01:10:48 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/20 17:09:59 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/20 17:41:09 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-t_mat2	mat2_minors(const t_mat2 m)
+inline t_mat2		mat2_minors(const t_mat2 m)
 {
 	return ((t_mat2){.m = {
 		m.m[3], m.m[2],
@@ -20,7 +20,7 @@ t_mat2	mat2_minors(const t_mat2 m)
 	}});
 }
 
-t_mat3	mat3_minors(const t_mat3 m)
+inline t_mat3		mat3_minors(const t_mat3 m)
 {
 	t_mat3	r;
 
@@ -56,7 +56,7 @@ inline static void	mat4_minors1(t_mat4 *r, t_mat4 m)
 		m.m[4], m.m[5], m.m[6], m.m[8], m.m[9], m.m[10]}});
 }
 
-t_mat4		mat4_minors(const t_mat4 m)
+inline t_mat4		mat4_minors(const t_mat4 m)
 {
 	t_mat4	r;
 
