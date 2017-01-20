@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 01:10:48 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 16:43:21 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/20 17:09:59 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_mat3	mat3_minors(const t_mat3 m)
 	return (r);
 }
 
-static void	mat4_minors1(t_mat4 *r, t_mat4 m)
+inline static void	mat4_minors1(t_mat4 *r, t_mat4 m)
 {
 	r->m[8] = mat3_determinant((t_mat3){.m = {m.m[1], m.m[2], m.m[3],
 		m.m[5], m.m[6], m.m[7], m.m[13], m.m[14], m.m[15]}});
