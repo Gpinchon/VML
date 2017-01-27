@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/20 17:39:00 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/26 18:30:34 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,13 +182,13 @@ TRANSFORM		new_transform(VEC3 position, VEC3 rotation, VEC3 scaling, VEC3 up);
 RAY				new_ray(VEC3 origin, VEC3 direction);
 INTERSECT		new_intersect(void);
 PRIMITIVE		new_primitive(PRIM_TYPE type);
-PRIMITIVE		new_sphere(float radius);
-PRIMITIVE		new_cylinder(float radius, float size);
-PRIMITIVE		new_capped_cylinder(float radius, float size);
-PRIMITIVE		new_disc(float radius);
-PRIMITIVE		new_plane(void);
-PRIMITIVE		new_cone(float radius, float size);
-PRIMITIVE		new_triangle(VEC3 a, VEC3 b, VEC3 c);
+PRIMITIVE		new_sphere(t_json *data);
+PRIMITIVE		new_cylinder(t_json *data);
+PRIMITIVE		new_capped_cylinder(t_json *data);
+PRIMITIVE		new_disc(t_json *data);
+PRIMITIVE		new_plane(t_json *data);
+PRIMITIVE		new_cone(t_json *data);
+PRIMITIVE		new_triangle(t_json *data);
 
 /*
 ** Transform operations
