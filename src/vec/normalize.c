@@ -16,12 +16,11 @@ t_vec2	vec2_normalize(t_vec2 v)
 {
 	float length;
 
-	if ((length = vec2_length(v)) != 1.f
-	&& length)
+	if ((length = 1.f / vec2_length(v)))
 	{
 		return ((t_vec2){
-			v.x /= length,
-			v.y /= length
+			v.x *= length,
+			v.y *= length
 		});
 	}
 	return (v);
@@ -31,13 +30,12 @@ t_vec3	vec3_normalize(t_vec3 v)
 {
 	float length;
 
-	if ((length = vec3_length(v)) != 1.f
-	&& length)
+	if ((length = 1.f / vec3_length(v)))
 	{
 		return ((t_vec3){
-			v.x /= length,
-			v.y /= length,
-			v.z /= length
+			v.x *= length,
+			v.y *= length,
+			v.z *= length
 		});
 	}
 	return (v);
@@ -47,14 +45,13 @@ t_vec4	vec4_normalize(t_vec4 v)
 {
 	float length;
 
-	if ((length = vec4_length(v)) != 1.f
-	&& length)
+	if ((length = 1.f / vec4_length(v)))
 	{
 		return ((t_vec4){
-			v.x /= length,
-			v.y /= length,
-			v.z /= length,
-			v.w /= length
+			v.x *= length,
+			v.y *= length,
+			v.z *= length,
+			v.w *= length
 		});
 	}
 	return (v);

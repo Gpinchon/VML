@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 01:20:11 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 17:58:19 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/20 17:40:45 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-t_mat2	mat2_cofactor(const t_mat2 m)
+inline t_mat2	mat2_cofactor(const t_mat2 m)
 {
 	t_mat2	minors;
 
@@ -23,7 +23,7 @@ t_mat2	mat2_cofactor(const t_mat2 m)
 	}});
 }
 
-t_mat3	mat3_cofactor(const t_mat3 m)
+inline t_mat3	mat3_cofactor(const t_mat3 m)
 {
 	t_mat3	minors;
 
@@ -35,7 +35,7 @@ t_mat3	mat3_cofactor(const t_mat3 m)
 	}});
 }
 
-t_mat4	mat4_cofactor(const t_mat4 m)
+inline t_mat4	mat4_cofactor(const t_mat4 m)
 {
 	t_mat4	minors;
 

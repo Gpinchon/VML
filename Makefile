@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2016/12/27 15:02:51 by gpinchon         ###   ########.fr        #
+#    Updated: 2017/01/20 17:36:56 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC		=	./src/mat/identity.c		\
 			./src/vec/length.c			\
 			./src/vec/negate.c			\
 			./src/vec/normalize.c		\
+			./src/vec/orthogonal.c		\
 			./src/vec/saturate.c		\
 			./src/vec/sub.c				\
 			./src/vec/convert.c			\
@@ -62,8 +63,10 @@ SRC		=	./src/mat/identity.c		\
 			./src/ray/primitives.c		\
 			./src/ray/primitives2.c		\
 			./src/ray/normals.c			\
+			./src/transform/new.c		\
+			./src/transform/update.c	\
 			./src/interp_functions.c	\
-			./src/float_equal.c			\
+			./src/float_functions.c		\
 			./src/vml_memset.c
 
 TESTSRC	=	./test/test.c
@@ -77,6 +80,7 @@ CFLAGS	= -Ofast -Wall -Wextra -Wall -I ./include
 
 $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m

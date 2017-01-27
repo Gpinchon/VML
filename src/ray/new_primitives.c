@@ -12,26 +12,22 @@
 
 #include <vml.h>
 
-PRIMITIVE	new_sphere(float radius, VEC3 position)
+PRIMITIVE	new_sphere(float radius)
 {
 	PRIMITIVE	s;
 
 	s = new_primitive(sphere);
-	s.position = position;
-	s.radius2 = (s.radius = radius) * radius;
+	s.data.sphere.radius2 = (s.data.sphere.radius = radius) * radius;
 	return (s);
 }
 
-PRIMITIVE	new_cone(float radius, float size,
-	VEC3 position, VEC3 direction)
+PRIMITIVE	new_cone(float radius, float size)
 {
 	PRIMITIVE	c;
 
 	c = new_primitive(cone);
-	c.position = position;
-	c.direction = vec3_normalize(direction);
-	c.radius2 = (c.radius = radius) * radius;
-	c.size = size;
+	c.data.cone.radius2 = (c.data.cone.radius = radius) * radius;
+	c.data.cone.size = size;
 	return c;
 }
 
@@ -40,8 +36,8 @@ PRIMITIVE	new_triangle(VEC3 a, VEC3 b, VEC3 c)
 	PRIMITIVE	t;
 
 	t = new_primitive(triangle);
-	t.point[0] = a;
-	t.point[1] = b;
-	t.point[2] = c;
+	t.data.triangle.point[0] = a;
+	t.data.triangle.point[1] = b;
+	t.data.triangle.point[2] = c;
 	return (t);
 }

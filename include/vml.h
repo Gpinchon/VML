@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/30 02:32:31 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/27 16:37:30 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define RAY			struct s_ray
 # define INTERSECT		struct s_intersect
 # define PRIMITIVE		struct s_primitive
+# define TRANSFORM		struct s_transform
+# define OBJ			union u_obj
+# define VMLBOOL		enum e_vmlbool
 # define FRUSTUM		VEC4
 # define FLOAT_ZERO		1E-6
 # define DOUBLE_ZERO	1E-6
@@ -31,6 +34,12 @@
 # define STEP(a, x)		(x >= a)
 # define CLAMP(nbr, min, max)	(nbr <= min ? min : nbr >= max ? max : nbr)
 # define CYCLE(nbr, min, max)	(nbr >= min ? max : nbr <= max ? min : nbr)
+
+enum			e_vmlbool
+{
+	vmlfalse = 0,
+	vmltrue = !vmlfalse
+};
 
 typedef struct	s_vec2
 {
@@ -68,6 +77,19 @@ typedef struct	s_mat4
 	float		m[16];
 }				t_mat4;
 
+typedef struct	s_transform
+{
+	VMLBOOL		updated;
+	VEC3		position;
+	VEC3		rotation;
+	VEC3		scaling;
+	VEC3		up;
+	MAT4		transform;
+	MAT4		translate;
+	MAT4		rotate;
+	MAT4		scale;
+}				t_transform;
+
 enum e_prim_type
 {
 	sphere = 0x1,
@@ -80,15 +102,55 @@ enum e_prim_type
 	disc = 0x8
 };
 
-typedef	struct	s_primitive
+typedef struct	s_sphere
 {
-	PRIM_TYPE	type;
+	float		radius;
+	float		radius2;
+}				t_sphere;
+
+typedef struct	s_plane
+{
+}				t_plane;
+
+typedef struct	s_disc
+{
+	float		radius;
+	float		radius2;
+}				t_disc;
+
+typedef struct	s_cylinder
+{
 	float		radius;
 	float		radius2;
 	float		size;
+}				t_cylinder;
+
+typedef struct	s_cone
+{
+	float		radius;
+	float		radius2;
+	float		size;
+}				t_cone;
+
+typedef struct	s_triangle
+{
 	VEC3		point[3];
-	VEC3		position;
-	VEC3		direction;
+}				t_triangle;
+
+typedef union	u_obj
+{
+	t_sphere	sphere;
+	t_plane		plane;
+	t_cylinder	cylinder;
+	t_cone		cone;
+	t_triangle	triangle;
+	t_disc		disc;
+}				u_obj;
+
+typedef	struct	s_primitive
+{
+	PRIM_TYPE	type;
+	u_obj		data;
 }				t_primitive;
 
 typedef struct	s_ray
@@ -116,19 +178,24 @@ MAT2			new_mat2(VEC2 a, VEC2 b);
 MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
 FRUSTUM			new_frustum(float left, float right, float bottom, float top);
+TRANSFORM		new_transform(VEC3 position, VEC3 rotation, VEC3 scaling, VEC3 up);
 RAY				new_ray(VEC3 origin, VEC3 direction);
 INTERSECT		new_intersect(void);
 PRIMITIVE		new_primitive(PRIM_TYPE type);
-PRIMITIVE		new_sphere(float radius, VEC3 position);
-PRIMITIVE		new_cylinder(float radius, float size,
-				VEC3 position, VEC3 direction);
-PRIMITIVE		new_capped_cylinder(float radius, float size,
-				VEC3 position, VEC3 direction);
-PRIMITIVE		new_disc(float radius, VEC3 position, VEC3 direction);
-PRIMITIVE		new_plane(VEC3 position, VEC3 direction);
-PRIMITIVE		new_cone(float radius, float size,
-				VEC3 position, VEC3 direction);
+PRIMITIVE		new_plane(void);
+PRIMITIVE		new_disc(float radius);
+PRIMITIVE		new_sphere(float radius);
+PRIMITIVE		new_cylinder(float radius, float size);
+PRIMITIVE		new_capped_cylinder(float radius, float size);
+PRIMITIVE		new_cone(float radius, float size);
 PRIMITIVE		new_triangle(VEC3 a, VEC3 b, VEC3 c);
+
+/*
+** Transform operations
+*/
+void			transform_update(TRANSFORM *transform);
+void			transform_set_target(TRANSFORM *transform, TRANSFORM *target);
+void			transform_set_parent(TRANSFORM *transform, TRANSFORM *parent);
 
 /*
 ** Vectorial operations (in alphabetic order)
@@ -171,6 +238,7 @@ VEC4			vec4_negate(VEC4 v);
 VEC2			vec2_normalize(VEC2 v);
 VEC3			vec3_normalize(VEC3 v);
 VEC4			vec4_normalize(VEC4 v);
+VEC3 			vec3_orthogonal(VEC3 v);
 VEC2			vec2_pow(VEC2 v, float p);
 VEC3			vec3_pow(VEC3 v, float p);
 VEC4			vec4_pow(VEC4 v, float p);
@@ -281,22 +349,23 @@ float			refraction_medium(VEC3 incident, VEC3 normal,
 ** Ray-tracing related functions
 */
 
-INTERSECT		intersect_sphere(PRIMITIVE s, RAY r);
-INTERSECT		intersect_cylinder(PRIMITIVE cp, RAY r);
-INTERSECT		intersect_disc(t_primitive d, t_ray r);
-INTERSECT		intersect_plane(PRIMITIVE cp, RAY r);
-INTERSECT		intersect_triangle(PRIMITIVE t, t_ray r);
-INTERSECT		intersect_cone(t_primitive cp, t_ray r);
+INTERSECT		intersect_sphere(OBJ s, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_cylinder(OBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_plane(OBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_disc(OBJ d, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_triangle(OBJ t, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_cone(OBJ cp, t_ray r, TRANSFORM *transform);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);
 float			find_closest(float t[2]);
-VEC3			cylinder_normal(VEC3 position, PRIMITIVE p);
-VEC3			sphere_normal(VEC3 position, PRIMITIVE p);
-VEC3			plane_normal(VEC3 position, PRIMITIVE p);
-VEC3			cone_normal(VEC3 position, PRIMITIVE p);
+VEC3			cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			sphere_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			plane_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			cone_normal(VEC3 position, OBJ p, TRANSFORM *t);
 
 char			float_equal(float a, float b);
+float			fract(float f);
 void			*vml_memset(void *dst, int c, unsigned int n);
 
 #endif

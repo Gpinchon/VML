@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_primitives2.c                                  :+:      :+:    :+:   */
+/*   new.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/27 14:41:06 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/12/27 14:45:03 by gpinchon         ###   ########.fr       */
+/*   Created: 2017/01/07 16:11:40 by gpinchon          #+#    #+#             */
+/*   Updated: 2017/01/07 16:14:07 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-PRIMITIVE	new_disc(float radius)
+TRANSFORM	new_transform(VEC3 position, VEC3 rotation, VEC3 scaling, VEC3 up)
 {
-	PRIMITIVE	p;
+	TRANSFORM	t;
 
-	p = new_primitive(disc);
-	p.data.disc.radius = radius;
-	p.data.disc.radius2 = radius * radius;
-	return (p);
-}
-
-PRIMITIVE	new_plane(void)
-{
-	PRIMITIVE	p;
-
-	p = new_primitive(plane);
-	return (p);
+	vml_memset(&t, 0, sizeof(TRANSFORM));
+	t.position = position;
+	t.rotation = rotation;
+	t.scaling = scaling;
+	t.up = up;
+	return (t);
 }
