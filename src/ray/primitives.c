@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/27 17:28:01 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/01/27 20:47:13 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ INTERSECT			intersect_sphere(u_obj p, t_ray r, TRANSFORM *t)
 	return (inter);
 }
 
-inline INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *t)
+inline INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *tr)
 {
 	INTERSECT	inter;
 	t_vec3		normal;
@@ -75,18 +75,18 @@ inline INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *t)
 	float		t;
 
 	inter = new_intersect();
-	normal = vec3_negate(t->rotation);
+	normal = vec3_negate(tr->rotation);
 	denom = vec3_dot(normal, r.direction);
 	if (!float_equal(denom, 0.f))
 	{
-		if ((t = vec3_dot(vec3_sub(t->position, r.origin), normal) / denom)
+		if ((t = vec3_dot(vec3_sub(tr->position, r.origin), normal) / denom)
 			>= FLOAT_ZERO)
 		{
 			inter.intersects = 1;
 			inter.distance[0] = t;
 			inter.distance[1] = inter.distance[0];
 			inter.position = intersect_compute_position(r, inter.distance[0]);
-			inter.normal = plane_normal(inter.position, p, t);
+			inter.normal = plane_normal(inter.position, p, tr);
 			if (denom < 0)
 				inter.normal = vec3_negate(inter.normal);
 		}
