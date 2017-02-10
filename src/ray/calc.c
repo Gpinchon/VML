@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 17:05:07 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/08 15:40:41 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:04:25 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ VEC3		intersect_compute_position(RAY r, float distance)
 	});
 }
 
-char	intersect_test(float t[2])
+char		intersect_test(float t[2])
 {
 	return (t[0] > FLOAT_ZERO || t[1] > FLOAT_ZERO);
 }
 
-float	find_closest(float t[2])
+float		find_closest(float t[2])
 {
 	return (t[0] < t[1] ? t[0] : t[1]);
 }
 
-char	solve_quadratic(float a, float b, float c, float *t)
+char		solve_quadratic(float a, float b, float c, float *t)
 {
 	float	discrim;
 	float	q;

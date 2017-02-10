@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 17:45:23 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/10 18:01:37 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:02:41 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_mat3	mat3_scale(t_vec3 scale)
 		0, 0, scale.x
 	}});
 }
+
 t_mat4	mat4_scale(t_vec3 scale)
 {
 	return ((t_mat4){ .m = {

@@ -6,12 +6,11 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 19:15:01 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 13:52:52 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
-
 
 t_mat3	mat3_translate(t_vec2 translation)
 {

@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 14:37:47 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/16 14:38:12 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:13:05 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 VEC3	vec3_orthogonal(VEC3 v)
 {
-	float k = fract(fabs(v.x) + 0.5);
-	return new_vec3(-v.y, v.x - k * v.z, k * v.y);
+	float k;
+
+	k = fract(fabs(v.x) + 0.5);
+	return (new_vec3(-v.y, v.x - k * v.z, k * v.y));
 }

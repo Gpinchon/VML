@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/27 16:37:30 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:30:21 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VML_H
 
 # include <math.h>
+
 # define VEC2			struct s_vec2
 # define VEC3			struct s_vec3
 # define VEC4			struct s_vec4
@@ -90,7 +91,7 @@ typedef struct	s_transform
 	MAT4		scale;
 }				t_transform;
 
-enum e_prim_type
+enum			e_prim_type
 {
 	sphere = 0x1,
 	plane = 0x2,
@@ -110,6 +111,7 @@ typedef struct	s_sphere
 
 typedef struct	s_plane
 {
+	float		empty;
 }				t_plane;
 
 typedef struct	s_disc
@@ -145,12 +147,12 @@ typedef union	u_obj
 	t_cone		cone;
 	t_triangle	triangle;
 	t_disc		disc;
-}				u_obj;
+}				t_obj;
 
 typedef	struct	s_primitive
 {
 	PRIM_TYPE	type;
-	u_obj		data;
+	OBJ			data;
 }				t_primitive;
 
 typedef struct	s_ray
@@ -178,7 +180,7 @@ MAT2			new_mat2(VEC2 a, VEC2 b);
 MAT3			new_mat3(VEC3 a, VEC3 b, VEC3 c);
 MAT4			new_mat4(VEC4 a, VEC4 b, VEC4 c, VEC4 d);
 FRUSTUM			new_frustum(float left, float right, float bottom, float top);
-TRANSFORM		new_transform(VEC3 position, VEC3 rotation, VEC3 scaling, VEC3 up);
+TRANSFORM		new_transform(VEC3 pos, VEC3 rotation, VEC3 scaling, VEC3 up);
 RAY				new_ray(VEC3 origin, VEC3 direction);
 INTERSECT		new_intersect(void);
 PRIMITIVE		new_primitive(PRIM_TYPE type);
@@ -224,8 +226,7 @@ VEC2			vec2_inverse(VEC2 v);
 VEC3			vec3_inverse(VEC3 v);
 VEC4			vec4_inverse(VEC4 v);
 VEC3			vec3_reflect(VEC3 v, VEC3 n);
-VEC3			vec3_refract(VEC3 incident, VEC3 normal,
-				float ior, float aior);
+VEC3			vec3_refract(VEC3 incident, VEC3 normal, float ior, float aior);
 float			vec2_length(VEC2 v);
 float			vec3_length(VEC3 v);
 float			vec4_length(VEC4 v);
@@ -238,7 +239,7 @@ VEC4			vec4_negate(VEC4 v);
 VEC2			vec2_normalize(VEC2 v);
 VEC3			vec3_normalize(VEC3 v);
 VEC4			vec4_normalize(VEC4 v);
-VEC3 			vec3_orthogonal(VEC3 v);
+VEC3			vec3_orthogonal(VEC3 v);
 VEC2			vec2_pow(VEC2 v, float p);
 VEC3			vec3_pow(VEC3 v, float p);
 VEC4			vec4_pow(VEC4 v, float p);
@@ -249,8 +250,7 @@ VEC2			vec2_inverse(VEC2 v);
 VEC3			vec3_inverse(VEC3 v);
 VEC4			vec4_inverse(VEC4 v);
 VEC3			vec3_reflect(VEC3 v, VEC3 n);
-VEC3			vec3_refract(VEC3 incident, VEC3 normal,
-				float ior, float aior);
+VEC3			vec3_refract(VEC3 incident, VEC3 normal, float ior, float aior);
 VEC2			vec2_saturate(VEC2 v);
 VEC3			vec3_saturate(VEC3 v);
 VEC4			vec4_saturate(VEC4 v);
@@ -337,13 +337,13 @@ MAT3			mat3_scale(VEC3 scale);
 MAT4			mat4_scale(VEC3 scale);
 MAT4			mat4_lookat(VEC3 eye, VEC3 target, VEC3 up);
 MAT4			mat4_perspective(float fov, float aspect,
-				float z_near, float z_far);
+							float z_near, float z_far);
 MAT4			mat4_orthographic(FRUSTUM frustum,
-				float z_near, float z_far);
+							float z_near, float z_far);
 MAT3			mat3_translate(VEC2 translation);
 MAT4			mat4_translate(VEC3 translation);
 float			refraction_medium(VEC3 incident, VEC3 normal,
-				float ior, float aior);
+							float ior, float aior);
 
 /*
 ** Ray-tracing related functions

@@ -6,19 +6,20 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:44:28 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/27 17:28:52 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:31:15 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-INTERSECT		intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
+INTERSECT				intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 	VEC3		co = vec3_sub(r.origin, transform->position);
 	float		rdpd = vec3_dot(r.direction, transform->rotation);
 	float		copd = vec3_dot(co, transform->rotation);
 	float		rad = 1 + cp.cone.radius2;
+
 	if ((inter.intersects = (solve_quadratic(
 		vec3_dot(r.direction, r.direction) - rad * pow(rdpd, 2),
 		2 * (vec3_dot(r.direction, co) - rad * rdpd * copd),
@@ -39,7 +40,7 @@ INTERSECT		intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
 	return (inter);
 }
 
-static inline INTERSECT	inter_cyl(u_obj p, t_ray r, TRANSFORM *t, INTERSECT i)
+static inline INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
 {
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
@@ -57,7 +58,7 @@ static inline INTERSECT	inter_cyl(u_obj p, t_ray r, TRANSFORM *t, INTERSECT i)
 	return (i);
 }
 
-INTERSECT			intersect_cylinder(u_obj p, t_ray r, TRANSFORM *t)
+INTERSECT				intersect_cylinder(OBJ p, t_ray r, TRANSFORM *t)
 {
 	t_vec3		v[5];
 	INTERSECT	i;
@@ -69,7 +70,8 @@ INTERSECT			intersect_cylinder(u_obj p, t_ray r, TRANSFORM *t)
 	v[3] = vec3_sub(r.direction, v[2]);
 	v[4] = vec3_sub(vec3_sub(r.origin, v[1]), vec3_sub(t->position, v[0]));
 	if (!(i.intersects = solve_quadratic(vec3_dot(v[3], v[3]),
-		vec3_dot(v[4], v[3]) * 2.0, vec3_dot(v[4], v[4]) - (p.cylinder.radius2), i.distance)))
+		vec3_dot(v[4], v[3]) * 2.0,
+		vec3_dot(v[4], v[4]) - (p.cylinder.radius2), i.distance)))
 		return (i);
 	if (p.cylinder.size > 0)
 	{

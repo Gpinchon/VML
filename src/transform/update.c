@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 16:14:33 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/07 16:48:12 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:12:09 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ void	transform_set_target(TRANSFORM *transform, TRANSFORM *target)
 	if (!transform || !target)
 		return ;
 	direction = vec3_normalize(vec3_sub(target->position, transform->position));
-	transform->rotation = (VEC3){asin(direction.y), -atan2(direction.x, direction.z), transform->rotation.z};
+	transform->rotation = (VEC3){asin(direction.y),
+		-atan2(direction.x, direction.z), transform->rotation.z};
 	transform_update(transform);
 }
 
 void	transform_set_parent(TRANSFORM *transform, TRANSFORM *parent)
 {
-
 	if (!parent || !transform)
 		return ;
-	transform->transform = mat4_mult_mat4(parent->transform, transform->transform);
+	transform->transform = mat4_mult_mat4(parent->transform,
+			transform->transform);
 }
