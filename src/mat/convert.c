@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 18:17:46 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 19:04:38 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 13:53:20 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ MAT3			mat2_to_mat3(MAT2 m)
 	}});
 }
 
-t_mat3	mat4_to_mat3(t_mat4 m)
+t_mat3			mat4_to_mat3(t_mat4 m)
 {
 	return ((t_mat3){.m = {
 		m.m[0], m.m[1], m.m[2],
@@ -38,7 +38,7 @@ t_mat3	mat4_to_mat3(t_mat4 m)
 	}});
 }
 
-t_mat4	mat3_to_mat4(t_mat3 m)
+t_mat4			mat3_to_mat4(t_mat3 m)
 {
 	return ((t_mat4){.m = {
 		m.m[0], m.m[1], m.m[2], 0,

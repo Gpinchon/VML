@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 01:10:48 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/20 17:41:09 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:03:39 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ inline t_mat4		mat4_minors(const t_mat4 m)
 	t_mat4	r;
 
 	r.m[0] = mat3_determinant((t_mat3){.m = {m.m[5], m.m[6], m.m[7],
-		m.m[9], m.m[10], m.m[11],m.m[13], m.m[14], m.m[15]}});
+		m.m[9], m.m[10], m.m[11], m.m[13], m.m[14], m.m[15]}});
 	r.m[1] = mat3_determinant((t_mat3){.m = {m.m[4], m.m[6], m.m[7],
 		m.m[8], m.m[10], m.m[11], m.m[12], m.m[14], m.m[15]}});
 	r.m[2] = mat3_determinant((t_mat3){.m = {m.m[4], m.m[5], m.m[7],

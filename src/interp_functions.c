@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 18:41:14 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/14 19:11:18 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 13:52:07 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ float	interp_clamp(float start, float end, float percent)
 
 float	interp_cycle(float start, float end, float percent)
 {
-	return(CYCLE(percent, start, end));
+	return (CYCLE(percent, start, end));
 }

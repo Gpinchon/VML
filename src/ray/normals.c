@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:15:01 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/07 16:54:28 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:08:37 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ VEC3	cone_normal(VEC3 position, OBJ p, TRANSFORM *t)
 	float	radius;
 	VEC3	ctop;
 	VEC3	qtop;
-	VEC3	rot; 
+	VEC3	rot;
 
 	rot = t->rotation;
 	ctop = vec3_sub(position, t->position);

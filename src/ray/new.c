@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 15:57:51 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/11 18:29:58 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:05:31 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RAY			new_ray(VEC3 origin, VEC3 direction)
 	return ((RAY){origin, direction});
 }
 
-INTERSECT	new_intersect()
+INTERSECT	new_intersect(void)
 {
 	INTERSECT	intersect;
 
@@ -31,5 +31,5 @@ PRIMITIVE	new_primitive(PRIM_TYPE type)
 
 	vml_memset(&primitive, 0, sizeof(PRIMITIVE));
 	primitive.type = type;
-	return(primitive);
+	return (primitive);
 }

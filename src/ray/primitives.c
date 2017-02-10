@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/27 20:47:13 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:30:54 by mbarbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-INTERSECT			intersect_triangle(u_obj p, t_ray r, TRANSFORM *tr)
+INTERSECT			intersect_triangle(OBJ p, t_ray r, TRANSFORM *tr)
 {
 	INTERSECT	i;
 	float		n_dot_r;
@@ -40,7 +40,7 @@ INTERSECT			intersect_triangle(u_obj p, t_ray r, TRANSFORM *tr)
 	return (i);
 }
 
-INTERSECT			intersect_sphere(u_obj p, t_ray r, TRANSFORM *t)
+INTERSECT			intersect_sphere(OBJ p, t_ray r, TRANSFORM *t)
 {
 	t_vec3		eye;
 	INTERSECT	inter;
@@ -67,7 +67,7 @@ INTERSECT			intersect_sphere(u_obj p, t_ray r, TRANSFORM *t)
 	return (inter);
 }
 
-inline INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *tr)
+inline INTERSECT	intersect_plane(OBJ p, t_ray r, TRANSFORM *tr)
 {
 	INTERSECT	inter;
 	t_vec3		normal;
@@ -94,7 +94,7 @@ inline INTERSECT	intersect_plane(u_obj p, t_ray r, TRANSFORM *tr)
 	return (inter);
 }
 
-INTERSECT			intersect_disc(u_obj d, t_ray r, TRANSFORM *transform)
+INTERSECT			intersect_disc(OBJ d, t_ray r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 
