@@ -6,38 +6,53 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:44:28 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/10 14:31:15 by mbarbari         ###   ########.fr       */
+/*   Updated: 2017/02/10 21:00:56 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
+static inline INTERSECT	inter_con(OBJ cp, TRANSFORM t,
+	INTERSECT i, VEC3 f)
+{
+	VEC3	v;
+
+	v = vec3_sub(i.position, t.position);
+	if (vec3_dot(t.rotation, vec3_normalize(v)) < 0)
+		i.intersects = 0;
+	else if (cp.cone.size >= 0)
+		i.intersects = (vec3_distance(t.position,
+			vec3_add(t.position, vec3_scale(t.rotation,
+			f.x))) <= cp.cone.size);
+	if (i.intersects)
+		i.normal = vec3_normalize(vec3_sub(v,
+			vec3_scale(t.rotation, f.z * f.x)));
+	return (i);
+}
+
 INTERSECT				intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
 {
-	INTERSECT	inter;
-	VEC3		co = vec3_sub(r.origin, transform->position);
-	float		rdpd = vec3_dot(r.direction, transform->rotation);
-	float		copd = vec3_dot(co, transform->rotation);
-	float		rad = 1 + cp.cone.radius2;
+	INTERSECT	i;
+	VEC3		v;
+	VEC3		f;
+	TRANSFORM	t;
 
-	if ((inter.intersects = (solve_quadratic(
-		vec3_dot(r.direction, r.direction) - rad * pow(rdpd, 2),
-		2 * (vec3_dot(r.direction, co) - rad * rdpd * copd),
-		vec3_dot(co, co) - rad * pow(copd, 2), inter.distance)
-	&& intersect_test(inter.distance))))
+	t = *transform;
+	v = vec3_sub(r.origin, t.position);
+	f = (VEC3){vec3_dot(r.direction, t.rotation), vec3_dot(v, t.rotation),
+	1 + cp.cone.radius2};
+	i.intersects = (solve_quadratic(vec3_dot(r.direction, r.direction) -
+	f.z * pow(f.x, 2), 2 * (vec3_dot(r.direction, v) - f.z * f.x * f.y),
+	vec3_dot(v, v) - f.z * pow(f.y, 2), i.distance)
+	&& intersect_test(i.distance));
+	if (i.intersects)
 	{
-		if (inter.distance[0] <= 0)
-			inter.distance[0] = inter.distance[1];
-		inter.position = intersect_compute_position(r, inter.distance[0]);
-		float	m = rdpd * inter.distance[0] + copd;
-		if (vec3_dot(transform->rotation, vec3_normalize(vec3_sub(inter.position, transform->position))) < 0)
-			inter.intersects = 0;
-		else if (cp.cone.size >= 0)
-			inter.intersects = (vec3_distance(transform->position, vec3_add(transform->position, vec3_scale(transform->rotation, m))) <= cp.cone.size);
-		if (inter.intersects)
-			inter.normal = vec3_normalize(vec3_sub(vec3_sub(inter.position, transform->position), vec3_scale(transform->rotation, rad * m)));
+		i.distance[0] = i.distance[0] <= 0 ? i.distance[1] : i.distance[0];
+		i.position = intersect_compute_position(r, i.distance[0]);
+		f.x = f.x * i.distance[0] + f.y;
+		i = inter_con(cp, t, i, f);
 	}
-	return (inter);
+	return (i);
 }
 
 static inline INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
