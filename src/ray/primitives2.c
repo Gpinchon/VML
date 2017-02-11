@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:44:28 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/10 21:00:56 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/11 15:59:19 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static inline INTERSECT	inter_con(OBJ cp, TRANSFORM t,
 	v = vec3_sub(i.position, t.position);
 	if (vec3_dot(t.rotation, vec3_normalize(v)) < 0)
 		i.intersects = 0;
-	else if (cp.cone.size >= 0)
+	else if (cp.cone.size > 0)
 		i.intersects = (vec3_distance(t.position,
 			vec3_add(t.position, vec3_scale(t.rotation,
 			f.x))) <= cp.cone.size);
