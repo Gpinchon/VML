@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/10 13:52:52 by mbarbari         ###   ########.fr       */
+/*   Updated: 2017/02/12 14:01:30 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ t_mat3	mat3_translate(t_vec2 translation)
 t_mat4	mat4_translate(t_vec3 translation)
 {
 	return ((t_mat4){ .m = {
-		1, 0, 0, translation.x,
-		0, 1, 0, translation.y,
-		0, 0, 1, translation.z,
-		0, 0, 0, 1
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		translation.x, translation.y, translation.z, 1
 	}});
 }
 
