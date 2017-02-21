@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 15:55:45 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/12 14:01:30 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/21 20:22:27 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ t_mat4	mat4_lookat(t_vec3 eye, t_vec3 target, t_vec3 up)
 		up.z, u.z, -target.z, 0,
 		-vec3_dot(up, eye),
 		-vec3_dot(u, eye),
-		vec3_dot(target, eye)
+		vec3_dot(target, eye), 1
 	}});
 }

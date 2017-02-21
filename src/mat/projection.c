@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_projection.c                                   :+:      :+:    :+:   */
+/*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 17:14:06 by gpinchon          #+#    #+#             */
-/*   Updated: 2016/11/08 17:55:08 by gpinchon         ###   ########.fr       */
+/*   Updated: 2017/02/21 19:48:49 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_mat4	mat4_perspective(float fov, float aspect, float z_near, float z_far)
 	return ((t_mat4){ .m = {
 		cotangent / aspect, 0, 0, 0,
 		0, cotangent, 0, 0,
-		0, 0, -(z_far + z_near) / delta_z, -1,
-		0, 0, -2 * z_near * z_far / delta_z, 0
+		0, 0, (z_far + z_near) / delta_z, -1,
+		0, 0, (2 * z_near * z_far) / delta_z, 0
 	}});
 }
 
