@@ -311,6 +311,8 @@ MAT4			mat4_fmult(MAT4 m, float f);
 MAT2			mat2_mult_mat2(MAT2 m, MAT2 m1);
 MAT3			mat3_mult_mat3(MAT3 m, MAT3 m1);
 MAT4			mat4_mult_mat4(MAT4 m, MAT4 m1);
+MAT2			mat2_combine(MAT2 m, MAT2 m1, MAT2 m2);
+MAT3			mat3_combine(MAT3 m, MAT3 m1, MAT3 m2);
 MAT4			mat4_combine(MAT4 m, MAT4 m1, MAT4 m2);
 float			mat2_determinant(MAT2 m);
 float			mat3_determinant(MAT3 m);
