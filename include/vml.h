@@ -339,8 +339,6 @@ MAT4			mat4_orthographic(FRUSTUM frustum,
 							float z_near, float z_far);
 MAT3			mat3_translate(VEC2 translation);
 MAT4			mat4_translate(VEC3 translation);
-float			refraction_medium(VEC3 incident, VEC3 normal,
-							float ior, float aior);
 
 /*
 ** Ray-tracing related functions
@@ -360,7 +358,8 @@ VEC3			cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t);
 VEC3			sphere_normal(VEC3 position, OBJ p, TRANSFORM *t);
 VEC3			plane_normal(VEC3 position, OBJ p, TRANSFORM *t);
 VEC3			cone_normal(VEC3 position, OBJ p, TRANSFORM *t);
-
+float			refraction_medium(VEC3 incident, VEC3 normal,
+							float ior, float aior);
 char			float_equal(float a, float b);
 float			fract(float f);
 void			*vml_memset(void *dst, int c, unsigned int n);
