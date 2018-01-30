@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/10 14:30:21 by mbarbari         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:24:34 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define TO_RADIAN(x)	(x * 0.01745329251994329576923690768489f)
 # define STEP(a, x)		(x >= a)
 # define CLAMP(nbr, min, max)	(nbr <= min ? min : nbr >= max ? max : nbr)
-# define CYCLE(nbr, min, max)	(nbr >= min ? max : nbr <= max ? min : nbr)
+# define CYCLE(nbr, min, max)	(nbr >= max ? min : nbr <= min ? max : nbr)
 
 enum			e_vmlbool
 {
