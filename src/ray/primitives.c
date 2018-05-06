@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 19:25:25 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/13 18:49:21 by gpinchon         ###   ########.fr       */
+/*   Updated: 2018/04/23 22:55:41 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-static inline VEC3	compute_tp(OBJ p, t_ray r, TRANSFORM *tr, VEC3 *tp)
+static  VEC3	compute_tp(OBJ p, t_ray r, TRANSFORM *tr, VEC3 *tp)
 {
 	tp[0] = mat4_mult_vec3(tr->transform, p.triangle.point[0]);
 	tp[1] = mat4_mult_vec3(tr->transform, p.triangle.point[1]);
@@ -79,7 +79,7 @@ INTERSECT			intersect_sphere(OBJ p, t_ray r, TRANSFORM *t)
 	return (inter);
 }
 
-inline INTERSECT	intersect_plane(OBJ p, t_ray r, TRANSFORM *tr)
+ INTERSECT	intersect_plane(OBJ p, t_ray r, TRANSFORM *tr)
 {
 	INTERSECT	inter;
 	t_vec3		normal;

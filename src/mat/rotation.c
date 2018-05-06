@@ -6,7 +6,7 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 17:56:16 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/12 14:53:54 by gpinchon         ###   ########.fr       */
+/*   Updated: 2018/04/23 21:53:02 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_mat3	mat3_rotation(t_vec3 axis)
 	VEC3	c;
 	VEC3	s;
 
-	axis = (VEC3){CLAMP(axis.x < 0 ? axis.x + 6.2831 : axis.x, 0, 6.2831),
-				CLAMP(axis.y < 0 ? axis.y + 6.2831 : axis.y, 0, 6.2831),
-				CLAMP(axis.z < 0 ? axis.z + 6.2831 : axis.z, 0, 6.2831)};
+	axis = (VEC3){CLAMP(axis.x < 0.f ? axis.x + 6.2831f : axis.x, 0.f, 6.2831f),
+				CLAMP(axis.y < 0.f ? axis.y + 6.2831f : axis.y, 0.f, 6.2831f),
+				CLAMP(axis.z < 0.f ? axis.z + 6.2831f : axis.z, 0.f, 6.2831f)};
 	c = (VEC3){cos(axis.x), cos(axis.y), cos(axis.z)};
 	s = (VEC3){sin(axis.x), sin(axis.y), sin(axis.z)};
 	return (mat3_mult_mat3(mat3_mult_mat3(

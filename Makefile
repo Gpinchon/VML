@@ -6,7 +6,7 @@
 #    By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/13 17:53:01 by gpinchon          #+#    #+#              #
-#    Updated: 2017/01/20 17:36:56 by gpinchon         ###   ########.fr        #
+#    Updated: 2018/04/23 22:44:25 by gpinchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,16 +66,15 @@ SRC		=	./src/mat/identity.c		\
 			./src/transform/new.c		\
 			./src/transform/update.c	\
 			./src/interp_functions.c	\
-			./src/float_functions.c		\
-			./src/vml_memset.c
+			./src/float_functions.c
 
 TESTSRC	=	./test/test.c
 TESTOBJ	= $(TESTSRC:.c=.o)
 TESTNAM	= vml_test
 
 OBJ		= $(SRC:.c=.o)
-CC		= gcc
-CFLAGS	= -Ofast -Wall -Wextra -Wall -I ./include
+CC		= g++
+CXXFLAGS	= -Ofast -Wall -Wextra -Wall -I ./include
 
 
 $(NAME): $(OBJ)
@@ -87,11 +86,11 @@ OK_COLOR=\033[32;01m
 OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
 %.o: %.c
 	@echo -n Compiling $@...
-	@($(CC) $(CFLAGS) -o $@ -c $<)
+	@($(CC) $(CXXFLAGS) -o $@ -c $<)
 	@echo "$(OK_STRING)"
 
 test:
-	$(CC) $(CFLAGS) $(TESTSRC) -L . -lvml -o vml_test
+	$(CC) $(CXXFLAGS) $(TESTSRC) -L. -lvml -o vml_test
 
 all: $(NAME) test
 

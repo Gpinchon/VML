@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 15:35:50 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/01/20 17:39:58 by gpinchon         ###   ########.fr       */
+/*   Updated: 2018/04/23 22:55:43 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-inline MAT2	mat2_fmult(MAT2 m, float f)
+ MAT2	mat2_fmult(MAT2 m, float f)
 {
 	int i;
 
@@ -25,7 +25,7 @@ inline MAT2	mat2_fmult(MAT2 m, float f)
 	return (m);
 }
 
-inline MAT3	mat3_fmult(MAT3 m, float f)
+ MAT3	mat3_fmult(MAT3 m, float f)
 {
 	int i;
 
@@ -38,7 +38,7 @@ inline MAT3	mat3_fmult(MAT3 m, float f)
 	return (m);
 }
 
-inline MAT4	mat4_fmult(MAT4 m, float f)
+ MAT4	mat4_fmult(MAT4 m, float f)
 {
 	int i;
 

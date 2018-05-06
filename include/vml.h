@@ -6,12 +6,14 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:13:36 by gpinchon          #+#    #+#             */
-/*   Updated: 2018/01/30 16:24:34 by gpinchon         ###   ########.fr       */
+/*   Updated: 2018/04/23 22:52:19 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VML_H
 # define VML_H
+
+extern "C" {
 
 # include <math.h>
 
@@ -362,6 +364,7 @@ float			refraction_medium(VEC3 incident, VEC3 normal,
 							float ior, float aior);
 char			float_equal(float a, float b);
 float			fract(float f);
-void			*vml_memset(void *dst, int c, unsigned int n);
+
+}
 
 #endif

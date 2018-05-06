@@ -6,13 +6,13 @@
 /*   By: gpinchon <gpinchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:44:28 by gpinchon          #+#    #+#             */
-/*   Updated: 2017/02/11 15:59:19 by gpinchon         ###   ########.fr       */
+/*   Updated: 2018/04/23 22:55:39 by gpinchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vml.h>
 
-static inline INTERSECT	inter_con(OBJ cp, TRANSFORM t,
+static  INTERSECT	inter_con(OBJ cp, TRANSFORM t,
 	INTERSECT i, VEC3 f)
 {
 	VEC3	v;
@@ -55,7 +55,7 @@ INTERSECT				intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
 	return (i);
 }
 
-static inline INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
+static  INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
 {
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
