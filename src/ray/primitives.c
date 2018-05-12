@@ -12,7 +12,7 @@
 
 #include <vml.h>
 
-static  VEC3	compute_tp(OBJ p, t_ray r, TRANSFORM *tr, VEC3 *tp)
+static  VEC3	compute_tp(VMLOBJ p, t_ray r, TRANSFORM *tr, VEC3 *tp)
 {
 	tp[0] = mat4_mult_vec3(tr->transform, p.triangle.point[0]);
 	tp[1] = mat4_mult_vec3(tr->transform, p.triangle.point[1]);
@@ -23,7 +23,7 @@ static  VEC3	compute_tp(OBJ p, t_ray r, TRANSFORM *tr, VEC3 *tp)
 	return (vec3_cross(r.direction, tp[2]));
 }
 
-INTERSECT			intersect_triangle(OBJ p, t_ray r, TRANSFORM *tr)
+INTERSECT			intersect_triangle(VMLOBJ p, t_ray r, TRANSFORM *tr)
 {
 	VEC3		tp[3];
 	VEC3		qvec;
@@ -52,7 +52,7 @@ INTERSECT			intersect_triangle(OBJ p, t_ray r, TRANSFORM *tr)
 	return (i);
 }
 
-INTERSECT			intersect_sphere(OBJ p, t_ray r, TRANSFORM *t)
+INTERSECT			intersect_sphere(VMLOBJ p, t_ray r, TRANSFORM *t)
 {
 	t_vec3		eye;
 	INTERSECT	inter;
@@ -79,7 +79,7 @@ INTERSECT			intersect_sphere(OBJ p, t_ray r, TRANSFORM *t)
 	return (inter);
 }
 
- INTERSECT	intersect_plane(OBJ p, t_ray r, TRANSFORM *tr)
+ INTERSECT	intersect_plane(VMLOBJ p, t_ray r, TRANSFORM *tr)
 {
 	INTERSECT	inter;
 	t_vec3		normal;
@@ -106,7 +106,7 @@ INTERSECT			intersect_sphere(OBJ p, t_ray r, TRANSFORM *t)
 	return (inter);
 }
 
-INTERSECT			intersect_disc(OBJ d, t_ray r, TRANSFORM *transform)
+INTERSECT			intersect_disc(VMLOBJ d, t_ray r, TRANSFORM *transform)
 {
 	INTERSECT	inter;
 

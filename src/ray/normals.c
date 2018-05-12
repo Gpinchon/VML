@@ -12,7 +12,7 @@
 
 #include <vml.h>
 
-VEC3	cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t)
+VEC3	cylinder_normal(VEC3 position, VMLOBJ p, TRANSFORM *t)
 {
 	VEC3	co;
 	VEC3	vpersp;
@@ -23,7 +23,7 @@ VEC3	cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t)
 	(void)p;
 }
 
-VEC3	sphere_normal(VEC3 position, OBJ p, TRANSFORM *t)
+VEC3	sphere_normal(VEC3 position, VMLOBJ p, TRANSFORM *t)
 {
 	VEC3	pos;
 
@@ -35,14 +35,14 @@ VEC3	sphere_normal(VEC3 position, OBJ p, TRANSFORM *t)
 			}));
 }
 
-VEC3	plane_normal(VEC3 position, OBJ p, TRANSFORM *t)
+VEC3	plane_normal(VEC3 position, VMLOBJ p, TRANSFORM *t)
 {
 	return (vec3_normalize(t->rotation));
 	(void)p;
 	(void)position;
 }
 
-VEC3	cone_normal(VEC3 position, OBJ p, TRANSFORM *t)
+VEC3	cone_normal(VEC3 position, VMLOBJ p, TRANSFORM *t)
 {
 	float	radius;
 	VEC3	ctop;

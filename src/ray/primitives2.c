@@ -12,7 +12,7 @@
 
 #include <vml.h>
 
-static  INTERSECT	inter_con(OBJ cp, TRANSFORM t,
+static  INTERSECT	inter_con(VMLOBJ cp, TRANSFORM t,
 	INTERSECT i, VEC3 f)
 {
 	VEC3	v;
@@ -30,7 +30,7 @@ static  INTERSECT	inter_con(OBJ cp, TRANSFORM t,
 	return (i);
 }
 
-INTERSECT				intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
+INTERSECT				intersect_cone(VMLOBJ cp, RAY r, TRANSFORM *transform)
 {
 	INTERSECT	i;
 	VEC3		v;
@@ -55,7 +55,7 @@ INTERSECT				intersect_cone(OBJ cp, RAY r, TRANSFORM *transform)
 	return (i);
 }
 
-static  INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
+static  INTERSECT	inter_cyl(VMLOBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
 {
 	if (!(i.intersects = intersect_test(i.distance)))
 		return (i);
@@ -73,7 +73,7 @@ static  INTERSECT	inter_cyl(OBJ p, t_ray r, TRANSFORM *t, INTERSECT i)
 	return (i);
 }
 
-INTERSECT				intersect_cylinder(OBJ p, t_ray r, TRANSFORM *t)
+INTERSECT				intersect_cylinder(VMLOBJ p, t_ray r, TRANSFORM *t)
 {
 	t_vec3		v[5];
 	INTERSECT	i;

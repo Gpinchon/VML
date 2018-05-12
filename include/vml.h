@@ -27,7 +27,7 @@ extern "C" {
 # define INTERSECT		struct s_intersect
 # define PRIMITIVE		struct s_primitive
 # define TRANSFORM		struct s_transform
-# define OBJ			union u_obj
+# define VMLOBJ			union u_obj
 # define VMLBOOL		enum e_vmlbool
 # define FRUSTUM		VEC4
 # define FLOAT_ZERO		1E-6
@@ -154,7 +154,7 @@ typedef union	u_obj
 typedef	struct	s_primitive
 {
 	PRIM_TYPE	type;
-	OBJ			data;
+	VMLOBJ			data;
 }				t_primitive;
 
 typedef struct	s_ray
@@ -346,20 +346,20 @@ MAT4			mat4_translate(VEC3 translation);
 ** Ray-tracing related functions
 */
 
-INTERSECT		intersect_sphere(OBJ s, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_cylinder(OBJ cp, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_plane(OBJ cp, RAY r, TRANSFORM *transform);
-INTERSECT		intersect_disc(OBJ d, t_ray r, TRANSFORM *transform);
-INTERSECT		intersect_triangle(OBJ t, t_ray r, TRANSFORM *transform);
-INTERSECT		intersect_cone(OBJ cp, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_sphere(VMLOBJ s, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_cylinder(VMLOBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_plane(VMLOBJ cp, RAY r, TRANSFORM *transform);
+INTERSECT		intersect_disc(VMLOBJ d, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_triangle(VMLOBJ t, t_ray r, TRANSFORM *transform);
+INTERSECT		intersect_cone(VMLOBJ cp, t_ray r, TRANSFORM *transform);
 VEC3			intersect_compute_position(RAY r, float distance);
 char			intersect_test(float t[2]);
 char			solve_quadratic(float a, float b, float c, float *t);
 float			find_closest(float t[2]);
-VEC3			cylinder_normal(VEC3 position, OBJ p, TRANSFORM *t);
-VEC3			sphere_normal(VEC3 position, OBJ p, TRANSFORM *t);
-VEC3			plane_normal(VEC3 position, OBJ p, TRANSFORM *t);
-VEC3			cone_normal(VEC3 position, OBJ p, TRANSFORM *t);
+VEC3			cylinder_normal(VEC3 position, VMLOBJ p, TRANSFORM *t);
+VEC3			sphere_normal(VEC3 position, VMLOBJ p, TRANSFORM *t);
+VEC3			plane_normal(VEC3 position, VMLOBJ p, TRANSFORM *t);
+VEC3			cone_normal(VEC3 position, VMLOBJ p, TRANSFORM *t);
 float			refraction_medium(VEC3 incident, VEC3 normal,
 							float ior, float aior);
 char			float_equal(float a, float b);
