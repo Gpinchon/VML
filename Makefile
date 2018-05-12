@@ -81,9 +81,16 @@ $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+
+
+ifeq ($(OS), Windows_NT)
+OK_STRING	=	[OK]
+else
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
 OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
+endif
+
 %.o: %.c
 	@echo -n Compiling $@...
 	@($(CC) $(CXXFLAGS) -o $@ -c $<)
